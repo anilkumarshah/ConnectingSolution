@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+
+
+    </script>
+    <script type="text/javascript">
+
+        $('.form_date').datetimepicker({
+            language: 'en',
+            weekStart: 1,
+            todayBtn: 1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0
+        });
+
+    </script>
+</head>
+<body>
+    <form id="form1"  role="form">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="" data-target="#myNavbar">
+                        <span class="icon-bar">a</span>
+                        <span class="icon-bar">s</span>
+                        <span class="icon-bar">d</span>
+                    </button>
+                    <a class="navbar-brand" href="home.html">DMT Express </a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="home.html">Home</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">UDIO DMT <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="QueryCustomer.html">Query Customer</a></li>
+                                <li><a href="UDIODMTTxnHistory.html">DMT Transaction</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">UDIO Wallet <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="CardQueryCustomer.html">Query Customer</a></li>
+                                <li><a href="UDIOCardTxnHistory.html">Card Transaction</a></li>
+
+                            </ul>
+                        </li>
+
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span>Welcome  <span class="badge">Agent</span></a> </li>
+                        <li><a href="Login.html"><span class="glyphicon glyphicon-log-out"></span>Log out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container form-group">
+            <div class="panel panel-default">
+                <div class="panel-heading"><b>ADD BENEFICIARY</b></div>
+                <div class="panel-body">
+
+                    <div class="form-group">
+                        <label for="usr">Beneficiary Name:</label>
+                        <input type="text" class="form-control" id="benename" placeholder="Enter Beneficiary Name" data-toggle="tooltip" title="Beneficiary Name" data-placement="top" maxlength="10" required="required" />
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Beneficiary Account No</label>
+                        <input type="text" class="form-control" id="beneaccount" placeholder="Enter Beneficiary Account No" data-toggle="tooltip" title="Beneficiary Account No" data-placement="top" maxlength="25" required="required" />
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Beneficiary Account Bank IFSC Code</label>
+                        <input type="text" class="form-control" id="benebankifsc" placeholder="Enter Beneficiary Account Bank IFSC Code" data-toggle="tooltip" title="Beneficiary Account Bank IFSC Code" data-placement="top" maxlength="25" required="required" />
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Beneficiary Mobile No:</label>
+                        <input type="text" class="form-control" id="beneMobileNo" placeholder="Enter Beneficiary Mobile No" data-toggle="tooltip" title="Beneficiary Mobile No" data-placement="top" maxlength="25" required="required" />
+                    </div>
+                    <div class="btn-group">
+                        <input type="button" id="btnSubmitExist2" name="btnSubmit" value="Add Beneficiary" class="btn btn-success" data-toggle="modal" data-target="#RealActivateBene" />
+                        <input type="button" id="btnValidateBene" name="btnSubmitValidate" value="Validate Beneficiary" class="btn btn-primary" data-toggle="modal" data-target="#ValidateBeneficiary" />
+                        &nbsp;&nbsp;&nbsp;
+                        <input type="button" id="btnSubmit2" name="btnSubmit" value="Reset" class="btn btn-info" />
+                    </div>
+                </div>
+
+                <div class="modal fade" id="RealActivateBene" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">ACTIVATE BENEFICIARY</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="usr">OTP:</label>
+                                    <input type="text" class="form-control" id="RealActivateotp" placeholder="OTP" data-toggle="tooltip" title="OTP" data-placement="top" maxlength="10" required="required" data-bind="value: replyNumber" />
+                                </div>
+                                <div class="btn-group">
+                                    <input type="button" id="btnSubmitRealActivateOTP" name="btnSubmit" value="Activate" class="btn btn-success" onclick="location.href = 'GetBeneIfCustomerAlreadyRegistered.html';"/>
+
+                                    <input type="button" id="btnSubmitRealResendActivateOTP" name="btnSubmit" value="Resend OTP" class="btn btn-danger" />
+                                </div>
+
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="modal fade" id="ValidateBeneficiary" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title text-uppercase">Beneficiary Account Validation</h4>
+                            </div>
+                            <div class="modal-body danger">
+                                <div class="form-group info">Status - Success / Failed / Pending / On Hold </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <center>
+                    <img src="image/Udio Logo_Powered by RBL Bank.png" class="img-responsive text-center" alt="UDIO Logo" width="104" height="60">
+                </center>
+            </div>
+        </div>
+        <div class="panel panel-footer">2017 <span class="glyphicon glyphicon-copyright-mark"></span> &nbsp;Copyright. Agent Pvt Ltd.</div>
+    </form>
+</body>
+</html>

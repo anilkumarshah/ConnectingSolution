@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CSDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_ContactUS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="BusinessWebsite" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Subject" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="BusinessMessage" Type="varchar" MaxLength="4000" />
+          <Property Name="hasReplied" Type="bit" />
+          <Property Name="ReplySentOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_ContactUS_Revert">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactUsId" Type="bigint" Nullable="false" />
+          <Property Name="BusinessMessageReplied" Type="varchar" MaxLength="4000" />
+          <Property Name="ReplySentOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CSDB.dbo.vw_ContactUs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_ContactUs">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="MobileNo" />
+            <PropertyRef Name="BusinessWebsite" />
+            <PropertyRef Name="Subject" />
+            <PropertyRef Name="hasReplied" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="BusinessWebsite" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Subject" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="BusinessMessage" Type="varchar" MaxLength="4000" />
+          <Property Name="hasReplied" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="ReplySentOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedOn" Type="varchar" MaxLength="30" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__tbl_Conta__Conta__1920BF5C">
+          <End Role="tbl_ContactUS" Type="Self.tbl_ContactUS" Multiplicity="1" />
+          <End Role="tbl_ContactUS_Revert" Type="Self.tbl_ContactUS_Revert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ContactUS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_ContactUS_Revert">
+              <PropertyRef Name="ContactUsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CSDBModelStoreContainer">
+          <EntitySet Name="tbl_ContactUS" EntityType="Self.tbl_ContactUS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ContactUS_Revert" EntityType="Self.tbl_ContactUS_Revert" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_ContactUs" EntityType="Self.vw_ContactUs" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_ContactUs].[Id] AS [Id], 
+    [vw_ContactUs].[Name] AS [Name], 
+    [vw_ContactUs].[Email] AS [Email], 
+    [vw_ContactUs].[MobileNo] AS [MobileNo], 
+    [vw_ContactUs].[BusinessWebsite] AS [BusinessWebsite], 
+    [vw_ContactUs].[Subject] AS [Subject], 
+    [vw_ContactUs].[BusinessMessage] AS [BusinessMessage], 
+    [vw_ContactUs].[hasReplied] AS [hasReplied], 
+    [vw_ContactUs].[ReplySentOn] AS [ReplySentOn], 
+    [vw_ContactUs].[CreatedBy] AS [CreatedBy], 
+    [vw_ContactUs].[CreatedOn] AS [CreatedOn], 
+    [vw_ContactUs].[UpdatedBy] AS [UpdatedBy], 
+    [vw_ContactUs].[UpdatedOn] AS [UpdatedOn]
+    FROM [dbo].[vw_ContactUs] AS [vw_ContactUs]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__tbl_Conta__Conta__1920BF5C" Association="Self.FK__tbl_Conta__Conta__1920BF5C">
+            <End Role="tbl_ContactUS" EntitySet="tbl_ContactUS" />
+            <End Role="tbl_ContactUS_Revert" EntitySet="tbl_ContactUS_Revert" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CSDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_ContactUS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MobileNo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BusinessWebsite" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Subject" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BusinessMessage" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="hasReplied" Type="Boolean" />
+          <Property Name="ReplySentOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_ContactUS_Revert" Relationship="Self.FK__tbl_Conta__Conta__1920BF5C" FromRole="tbl_ContactUS" ToRole="tbl_ContactUS_Revert" />
+        </EntityType>
+        <EntityType Name="tbl_ContactUS_Revert">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactUsId" Type="Int64" Nullable="false" />
+          <Property Name="BusinessMessageReplied" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="ReplySentOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_ContactUS" Relationship="Self.FK__tbl_Conta__Conta__1920BF5C" FromRole="tbl_ContactUS_Revert" ToRole="tbl_ContactUS" />
+        </EntityType>
+        <EntityType Name="vw_ContactUs">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="MobileNo" />
+            <PropertyRef Name="BusinessWebsite" />
+            <PropertyRef Name="Subject" />
+            <PropertyRef Name="hasReplied" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MobileNo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BusinessWebsite" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Subject" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BusinessMessage" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="hasReplied" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ReplySentOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK__tbl_Conta__Conta__1920BF5C">
+          <End Role="tbl_ContactUS" Type="Self.tbl_ContactUS" Multiplicity="1" />
+          <End Role="tbl_ContactUS_Revert" Type="Self.tbl_ContactUS_Revert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ContactUS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_ContactUS_Revert">
+              <PropertyRef Name="ContactUsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CSDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_ContactUS" EntityType="Self.tbl_ContactUS" />
+          <EntitySet Name="tbl_ContactUS_Revert" EntityType="Self.tbl_ContactUS_Revert" />
+          <EntitySet Name="vw_ContactUs" EntityType="Self.vw_ContactUs" />
+          <AssociationSet Name="FK__tbl_Conta__Conta__1920BF5C" Association="Self.FK__tbl_Conta__Conta__1920BF5C">
+            <End Role="tbl_ContactUS" EntitySet="tbl_ContactUS" />
+            <End Role="tbl_ContactUS_Revert" EntitySet="tbl_ContactUS_Revert" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CSDBModelStoreContainer" CdmEntityContainer="CSDBEntities">
+          <EntitySetMapping Name="tbl_ContactUS">
+            <EntityTypeMapping TypeName="CSDBModel.tbl_ContactUS">
+              <MappingFragment StoreEntitySet="tbl_ContactUS">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="BusinessWebsite" ColumnName="BusinessWebsite" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="BusinessMessage" ColumnName="BusinessMessage" />
+                <ScalarProperty Name="hasReplied" ColumnName="hasReplied" />
+                <ScalarProperty Name="ReplySentOn" ColumnName="ReplySentOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ContactUS_Revert">
+            <EntityTypeMapping TypeName="CSDBModel.tbl_ContactUS_Revert">
+              <MappingFragment StoreEntitySet="tbl_ContactUS_Revert">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ContactUsId" ColumnName="ContactUsId" />
+                <ScalarProperty Name="BusinessMessageReplied" ColumnName="BusinessMessageReplied" />
+                <ScalarProperty Name="ReplySentOn" ColumnName="ReplySentOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_ContactUs">
+            <EntityTypeMapping TypeName="CSDBModel.vw_ContactUs">
+              <MappingFragment StoreEntitySet="vw_ContactUs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="BusinessWebsite" ColumnName="BusinessWebsite" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="BusinessMessage" ColumnName="BusinessMessage" />
+                <ScalarProperty Name="hasReplied" ColumnName="hasReplied" />
+                <ScalarProperty Name="ReplySentOn" ColumnName="ReplySentOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

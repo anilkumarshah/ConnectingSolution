@@ -1,0 +1,1642 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SKSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_BillDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_BillMasterID" Type="bigint" Nullable="false" />
+          <Property Name="CompanyID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="HSNNo" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Qnty" Type="int" Nullable="false" />
+          <Property Name="Rate" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="UOM" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Total" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Discount" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="TaxableValue" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="SGSTRate" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="SGSTValue" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="CGSTRate" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="CGSTValue" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="GUID" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SKS.dbo.tbl_BillDetails_Other' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_BillDetails_Other">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="FK_BillMasterID" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_BillMasterID" Type="bigint" Nullable="false" />
+          <Property Name="FreightCharges" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="LoadingnPackingCharges" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="INsuranceCharges" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="OtherCharges" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_BillDetails_temp">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Company" Type="varchar" MaxLength="250" />
+          <Property Name="Product" Type="varchar" MaxLength="250" />
+          <Property Name="HSNNo" Type="varchar" MaxLength="255" />
+          <Property Name="Qnty" Type="int" />
+          <Property Name="Rate" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="UOM" Type="varchar" MaxLength="25" />
+          <Property Name="Total" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="Discount" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="TaxableValue" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="SGSTRate" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="SGSTValue" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="CGSTRate" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="CGSTValue" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="GUID" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_BillMaster">
+          <Key>
+            <PropertyRef Name="BillId" />
+          </Key>
+          <Property Name="BillId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FinancialYear" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="InvoiceDate" Type="datetime" Nullable="false" />
+          <Property Name="FK_BillingCustomerID" Type="int" Nullable="false" />
+          <Property Name="FK_ShippingCustomerID" Type="int" Nullable="false" />
+          <Property Name="InvoiceTotalAmount" Type="numeric" Precision="20" Scale="2" Nullable="false" />
+          <Property Name="TotalDiscountonInvoice" Type="numeric" Precision="20" Scale="2" Nullable="false" />
+          <Property Name="TotalCollectedAmount" Type="numeric" Precision="20" Scale="2" Nullable="false" />
+          <Property Name="FreightCharges" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="LoadingnPackingCharges" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="InsuranceCharges" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="OtherCharges" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="TransportationMode" Type="varchar" MaxLength="50" />
+          <Property Name="VehivleNumber" Type="varchar" MaxLength="50" />
+          <Property Name="DateNSupplyofTime" Type="datetime" />
+          <Property Name="PlaceofSupply" Type="varchar" MaxLength="50" />
+          <Property Name="InvoiceStatus" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GUID" Type="varchar" MaxLength="50" />
+          <Property Name="TotalProductQuantity" Type="int" />
+          <Property Name="TotalTaxableAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TotalSGSTAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TotalCGSTAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_CompanyMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="255" />
+          <Property Name="BusinessWebsite" Type="varchar" MaxLength="255" />
+          <Property Name="CompanyShortKey" Type="varchar" MaxLength="25" />
+          <Property Name="ContactPersonName" Type="varchar" MaxLength="255" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_CustomerBillingAddress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RetailerShopName" Type="varchar" MaxLength="250" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="BillingAddress1" Type="varchar" MaxLength="255" />
+          <Property Name="BillingAddress2" Type="varchar" MaxLength="255" />
+          <Property Name="BillingCity" Type="varchar" MaxLength="50" />
+          <Property Name="FK_StateID" Type="int" />
+          <Property Name="Billingpin" Type="char" MaxLength="6" />
+          <Property Name="BillingEmail" Type="varchar" MaxLength="255" />
+          <Property Name="BillingPhone" Type="varchar" MaxLength="255" />
+          <Property Name="BillingPANNo" Type="varchar" MaxLength="15" />
+          <Property Name="BillingAadharNo" Type="varchar" MaxLength="15" />
+          <Property Name="BillingGSTINNo" Type="varchar" MaxLength="25" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="BillingProprietorName" Type="varchar" MaxLength="250" />
+          <Property Name="GUID" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_CustomerShippingAddress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShippingRetailerShopName" Type="varchar" MaxLength="250" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ShippingAddress1" Type="varchar" MaxLength="255" />
+          <Property Name="ShippingAddress2" Type="varchar" MaxLength="255" />
+          <Property Name="ShippingCity" Type="varchar" MaxLength="50" />
+          <Property Name="FK_StateID" Type="int" />
+          <Property Name="Shippingpin" Type="char" MaxLength="6" />
+          <Property Name="ShippingEmail" Type="varchar" MaxLength="255" />
+          <Property Name="ShippingPhone" Type="varchar" MaxLength="255" />
+          <Property Name="ShippingPANNo" Type="varchar" MaxLength="15" />
+          <Property Name="ShippingAadharNo" Type="varchar" MaxLength="15" />
+          <Property Name="ShippingGSTINNo" Type="varchar" MaxLength="25" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="ShippingProprietorName" Type="varchar" MaxLength="250" />
+          <Property Name="GUID" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_ProductMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_CompanyMasterID" Type="int" />
+          <Property Name="ProductName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="HSNCode" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="UOM" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_ProductPrice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_ProductMasterID" Type="int" />
+          <Property Name="Price" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="SGSTPercentageRate" Type="numeric" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="CGSTPercentageRate" Type="numeric" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SKS.dbo.tbl_ProductPriceChangesLog' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_ProductPriceChangesLog">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PriceChangeDate" Type="datetime" />
+          <Property Name="HasPriceChanged" Type="bit" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="255" />
+          <Property Name="ModifiedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_SKSDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShopName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ShopProperiterName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ShopAddressLine1" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ShopAddressLine2" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ShopCity" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ShopState" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ShopPin" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ShopPhoneNo" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ShopEmail" Type="varchar" MaxLength="255" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="255" />
+          <Property Name="ShopWebsite" Type="varchar" MaxLength="255" />
+          <Property Name="ShopGSTINNo" Type="varchar" MaxLength="25" />
+          <Property Name="ShopPropriterSignature" Type="image" />
+          <Property Name="ContactPersonName" Type="varchar" MaxLength="255" />
+          <Property Name="ShopPAN" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_StateMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="StateCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_TransportationMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TransportationName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SKS.dbo.tbl_Users' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_Users">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="IsDeleted" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="255" />
+          <Property Name="Password" Type="varchar" MaxLength="512" />
+          <Property Name="UserRole" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="GUID" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SKS.dbo.vw_Bill_InvoiceDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_Bill_InvoiceDetails">
+          <Key>
+            <PropertyRef Name="InvoiceNo" />
+            <PropertyRef Name="CompanyID" />
+            <PropertyRef Name="CompanyName" />
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="ProductName" />
+            <PropertyRef Name="HSNNo" />
+            <PropertyRef Name="Qnty" />
+            <PropertyRef Name="Rate" />
+            <PropertyRef Name="UOM" />
+            <PropertyRef Name="Total" />
+            <PropertyRef Name="Discount" />
+            <PropertyRef Name="TaxableValue" />
+            <PropertyRef Name="SGSTRate" />
+            <PropertyRef Name="SGSTValue" />
+            <PropertyRef Name="CGSTRate" />
+            <PropertyRef Name="CGSTValue" />
+          </Key>
+          <Property Name="InvoiceNo" Type="bigint" Nullable="false" />
+          <Property Name="CompanyID" Type="int" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="HSNNo" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Qnty" Type="int" Nullable="false" />
+          <Property Name="Rate" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="UOM" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Total" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Discount" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="TaxableValue" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="SGSTRate" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="SGSTValue" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="CGSTRate" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="CGSTValue" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SKS.dbo.vw_BillingCustomer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_BillingCustomer">
+          <Key>
+            <PropertyRef Name="BillingID" />
+          </Key>
+          <Property Name="BillingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BillingCustomer" Type="varchar" MaxLength="1136" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SKS.dbo.vw_BillInvoiceMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_BillInvoiceMaster">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+            <PropertyRef Name="FinancialYear" />
+            <PropertyRef Name="InvoiceDate" />
+            <PropertyRef Name="FK_BillingCustomerID" />
+            <PropertyRef Name="FK_ShippingCustomerID" />
+            <PropertyRef Name="InvoiceTotalAmount" />
+            <PropertyRef Name="TotalDiscountonInvoice" />
+            <PropertyRef Name="TotalCollectedAmount" />
+            <PropertyRef Name="CustomerName" />
+            <PropertyRef Name="ShippingCustomerName" />
+          </Key>
+          <Property Name="InvoiceID" Type="bigint" Nullable="false" />
+          <Property Name="FinancialYear" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="InvoiceDate" Type="datetime" Nullable="false" />
+          <Property Name="FK_BillingCustomerID" Type="int" Nullable="false" />
+          <Property Name="FK_ShippingCustomerID" Type="int" Nullable="false" />
+          <Property Name="InvoiceTotalAmount" Type="numeric" Precision="20" Scale="2" Nullable="false" />
+          <Property Name="TotalDiscountonInvoice" Type="numeric" Precision="20" Scale="2" Nullable="false" />
+          <Property Name="TotalCollectedAmount" Type="numeric" Precision="20" Scale="2" Nullable="false" />
+          <Property Name="FreightCharges" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="LoadingnPackingCharges" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="InsuranceCharges" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="OtherCharges" Type="numeric" Precision="20" Scale="2" />
+          <Property Name="TransportationMode" Type="varchar" MaxLength="255" />
+          <Property Name="VehivleNumber" Type="varchar" MaxLength="50" />
+          <Property Name="DateNSupplyofTime" Type="datetime" />
+          <Property Name="PlaceofSupply" Type="varchar" MaxLength="50" />
+          <Property Name="RetailerShopName" Type="varchar" MaxLength="250" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="BillingAddress1" Type="varchar" MaxLength="255" />
+          <Property Name="BillingAddress2" Type="varchar" MaxLength="255" />
+          <Property Name="BillingCity" Type="varchar" MaxLength="50" />
+          <Property Name="BillingStateID" Type="int" />
+          <Property Name="BillingStateName" Type="varchar" MaxLength="255" />
+          <Property Name="BillingStateCode" Type="varchar" MaxLength="10" />
+          <Property Name="Billingpin" Type="char" MaxLength="6" />
+          <Property Name="BillingEmail" Type="varchar" MaxLength="255" />
+          <Property Name="BillingPhone" Type="varchar" MaxLength="255" />
+          <Property Name="BillingPANNo" Type="varchar" MaxLength="15" />
+          <Property Name="BillingAadharNo" Type="varchar" MaxLength="15" />
+          <Property Name="BillingGSTINNo" Type="varchar" MaxLength="25" />
+          <Property Name="ShippingRetailerShopName" Type="varchar" MaxLength="250" />
+          <Property Name="ShippingCustomerName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ShippingAddress1" Type="varchar" MaxLength="255" />
+          <Property Name="ShippingAddress2" Type="varchar" MaxLength="255" />
+          <Property Name="ShippingCity" Type="varchar" MaxLength="50" />
+          <Property Name="ShippingStateID" Type="int" />
+          <Property Name="ShippingStateName" Type="varchar" MaxLength="255" />
+          <Property Name="ShippingStateCode" Type="varchar" MaxLength="10" />
+          <Property Name="Shippingpin" Type="char" MaxLength="6" />
+          <Property Name="ShippingEmail" Type="varchar" MaxLength="255" />
+          <Property Name="ShippingPhone" Type="varchar" MaxLength="255" />
+          <Property Name="ShippingPANNo" Type="varchar" MaxLength="15" />
+          <Property Name="ShippingAadharNo" Type="varchar" MaxLength="15" />
+          <Property Name="ShippingGSTINNo" Type="varchar" MaxLength="25" />
+          <Property Name="TotalProductQuantity" Type="int" />
+          <Property Name="TotalTaxableAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TotalSGSTAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TotalCGSTAmount" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SKS.dbo.vw_CompanyMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_CompanyMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+            
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SKS.dbo.vw_ProductMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_ProductMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+            
+            
+            
+            <PropertyRef Name="CompanyName" />
+            <PropertyRef Name="IsActive" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="FK_CompanyMasterID" Type="int" />
+          <Property Name="HSNCode" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="UOM" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SKS.dbo.vw_ProductPrice' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_ProductPrice">
+          <Key>
+            <PropertyRef Name="Id" />
+            
+            
+            
+            
+            
+            
+            
+            
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FK_ProductMasterID" Type="int" />
+          <Property Name="Price" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="SGSTPercentageRate" Type="numeric" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="CGSTPercentageRate" Type="numeric" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="FK_CompanyMasterID" Type="int" />
+          <Property Name="HSNCode" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="UOM" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SKS.dbo.vw_ShippingCustomer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_ShippingCustomer">
+          <Key>
+            <PropertyRef Name="ShippingID" />
+          </Key>
+          <Property Name="ShippingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShippingCustomer" Type="varchar" MaxLength="1136" />
+        </EntityType>
+        <Function Name="getInvoiceDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceNo" Type="bigint" Mode="In" />
+          <Parameter Name="pagingsize" Type="int" Mode="In" />
+          <Parameter Name="pageno" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="SKSModelStoreContainer">
+          <EntitySet Name="tbl_BillDetails" EntityType="Self.tbl_BillDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_BillDetails_temp" EntityType="Self.tbl_BillDetails_temp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_BillMaster" EntityType="Self.tbl_BillMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_CompanyMaster" EntityType="Self.tbl_CompanyMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_CustomerBillingAddress" EntityType="Self.tbl_CustomerBillingAddress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_CustomerShippingAddress" EntityType="Self.tbl_CustomerShippingAddress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ProductMaster" EntityType="Self.tbl_ProductMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ProductPrice" EntityType="Self.tbl_ProductPrice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_SKSDetails" EntityType="Self.tbl_SKSDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_StateMaster" EntityType="Self.tbl_StateMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_TransportationMaster" EntityType="Self.tbl_TransportationMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_BillDetails_Other" EntityType="Self.tbl_BillDetails_Other" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_BillDetails_Other].[Id] AS [Id], 
+    [tbl_BillDetails_Other].[FK_BillMasterID] AS [FK_BillMasterID], 
+    [tbl_BillDetails_Other].[FreightCharges] AS [FreightCharges], 
+    [tbl_BillDetails_Other].[LoadingnPackingCharges] AS [LoadingnPackingCharges], 
+    [tbl_BillDetails_Other].[INsuranceCharges] AS [INsuranceCharges], 
+    [tbl_BillDetails_Other].[OtherCharges] AS [OtherCharges], 
+    [tbl_BillDetails_Other].[IsActive] AS [IsActive], 
+    [tbl_BillDetails_Other].[IsDeleted] AS [IsDeleted], 
+    [tbl_BillDetails_Other].[CreatedBy] AS [CreatedBy], 
+    [tbl_BillDetails_Other].[CreatedOn] AS [CreatedOn], 
+    [tbl_BillDetails_Other].[UpdatedBy] AS [UpdatedBy], 
+    [tbl_BillDetails_Other].[UpdatedOn] AS [UpdatedOn]
+    FROM [dbo].[tbl_BillDetails_Other] AS [tbl_BillDetails_Other]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbl_ProductPriceChangesLog" EntityType="Self.tbl_ProductPriceChangesLog" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_ProductPriceChangesLog].[id] AS [id], 
+    [tbl_ProductPriceChangesLog].[PriceChangeDate] AS [PriceChangeDate], 
+    [tbl_ProductPriceChangesLog].[HasPriceChanged] AS [HasPriceChanged], 
+    [tbl_ProductPriceChangesLog].[CreatedBy] AS [CreatedBy], 
+    [tbl_ProductPriceChangesLog].[CreatedOn] AS [CreatedOn], 
+    [tbl_ProductPriceChangesLog].[ModifiedBy] AS [ModifiedBy], 
+    [tbl_ProductPriceChangesLog].[ModifiedOn] AS [ModifiedOn]
+    FROM [dbo].[tbl_ProductPriceChangesLog] AS [tbl_ProductPriceChangesLog]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbl_Users" EntityType="Self.tbl_Users" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_Users].[id] AS [id], 
+    [tbl_Users].[UserName] AS [UserName], 
+    [tbl_Users].[Password] AS [Password], 
+    [tbl_Users].[UserRole] AS [UserRole], 
+    [tbl_Users].[IsActive] AS [IsActive], 
+    [tbl_Users].[IsDeleted] AS [IsDeleted], 
+    [tbl_Users].[GUID] AS [GUID], 
+    [tbl_Users].[CreatedBy] AS [CreatedBy], 
+    [tbl_Users].[CreatedOn] AS [CreatedOn], 
+    [tbl_Users].[UpdatedBy] AS [UpdatedBy], 
+    [tbl_Users].[UpdatedOn] AS [UpdatedOn]
+    FROM [dbo].[tbl_Users] AS [tbl_Users]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_Bill_InvoiceDetails" EntityType="Self.vw_Bill_InvoiceDetails" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Bill_InvoiceDetails].[InvoiceNo] AS [InvoiceNo], 
+    [vw_Bill_InvoiceDetails].[CompanyID] AS [CompanyID], 
+    [vw_Bill_InvoiceDetails].[CompanyName] AS [CompanyName], 
+    [vw_Bill_InvoiceDetails].[ProductID] AS [ProductID], 
+    [vw_Bill_InvoiceDetails].[ProductName] AS [ProductName], 
+    [vw_Bill_InvoiceDetails].[HSNNo] AS [HSNNo], 
+    [vw_Bill_InvoiceDetails].[Qnty] AS [Qnty], 
+    [vw_Bill_InvoiceDetails].[Rate] AS [Rate], 
+    [vw_Bill_InvoiceDetails].[UOM] AS [UOM], 
+    [vw_Bill_InvoiceDetails].[Total] AS [Total], 
+    [vw_Bill_InvoiceDetails].[Discount] AS [Discount], 
+    [vw_Bill_InvoiceDetails].[TaxableValue] AS [TaxableValue], 
+    [vw_Bill_InvoiceDetails].[SGSTRate] AS [SGSTRate], 
+    [vw_Bill_InvoiceDetails].[SGSTValue] AS [SGSTValue], 
+    [vw_Bill_InvoiceDetails].[CGSTRate] AS [CGSTRate], 
+    [vw_Bill_InvoiceDetails].[CGSTValue] AS [CGSTValue]
+    FROM [dbo].[vw_Bill_InvoiceDetails] AS [vw_Bill_InvoiceDetails]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_BillingCustomer" EntityType="Self.vw_BillingCustomer" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_BillingCustomer].[BillingID] AS [BillingID], 
+    [vw_BillingCustomer].[BillingCustomer] AS [BillingCustomer]
+    FROM [dbo].[vw_BillingCustomer] AS [vw_BillingCustomer]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_BillInvoiceMaster" EntityType="Self.vw_BillInvoiceMaster" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_BillInvoiceMaster].[InvoiceID] AS [InvoiceID], 
+    [vw_BillInvoiceMaster].[FinancialYear] AS [FinancialYear], 
+    [vw_BillInvoiceMaster].[InvoiceDate] AS [InvoiceDate], 
+    [vw_BillInvoiceMaster].[FK_BillingCustomerID] AS [FK_BillingCustomerID], 
+    [vw_BillInvoiceMaster].[FK_ShippingCustomerID] AS [FK_ShippingCustomerID], 
+    [vw_BillInvoiceMaster].[InvoiceTotalAmount] AS [InvoiceTotalAmount], 
+    [vw_BillInvoiceMaster].[TotalDiscountonInvoice] AS [TotalDiscountonInvoice], 
+    [vw_BillInvoiceMaster].[TotalCollectedAmount] AS [TotalCollectedAmount], 
+    [vw_BillInvoiceMaster].[FreightCharges] AS [FreightCharges], 
+    [vw_BillInvoiceMaster].[LoadingnPackingCharges] AS [LoadingnPackingCharges], 
+    [vw_BillInvoiceMaster].[InsuranceCharges] AS [InsuranceCharges], 
+    [vw_BillInvoiceMaster].[OtherCharges] AS [OtherCharges], 
+    [vw_BillInvoiceMaster].[TransportationMode] AS [TransportationMode], 
+    [vw_BillInvoiceMaster].[VehivleNumber] AS [VehivleNumber], 
+    [vw_BillInvoiceMaster].[DateNSupplyofTime] AS [DateNSupplyofTime], 
+    [vw_BillInvoiceMaster].[PlaceofSupply] AS [PlaceofSupply], 
+    [vw_BillInvoiceMaster].[RetailerShopName] AS [RetailerShopName], 
+    [vw_BillInvoiceMaster].[CustomerName] AS [CustomerName], 
+    [vw_BillInvoiceMaster].[BillingAddress1] AS [BillingAddress1], 
+    [vw_BillInvoiceMaster].[BillingAddress2] AS [BillingAddress2], 
+    [vw_BillInvoiceMaster].[BillingCity] AS [BillingCity], 
+    [vw_BillInvoiceMaster].[BillingStateID] AS [BillingStateID], 
+    [vw_BillInvoiceMaster].[BillingStateName] AS [BillingStateName], 
+    [vw_BillInvoiceMaster].[BillingStateCode] AS [BillingStateCode], 
+    [vw_BillInvoiceMaster].[Billingpin] AS [Billingpin], 
+    [vw_BillInvoiceMaster].[BillingEmail] AS [BillingEmail], 
+    [vw_BillInvoiceMaster].[BillingPhone] AS [BillingPhone], 
+    [vw_BillInvoiceMaster].[BillingPANNo] AS [BillingPANNo], 
+    [vw_BillInvoiceMaster].[BillingAadharNo] AS [BillingAadharNo], 
+    [vw_BillInvoiceMaster].[BillingGSTINNo] AS [BillingGSTINNo], 
+    [vw_BillInvoiceMaster].[ShippingRetailerShopName] AS [ShippingRetailerShopName], 
+    [vw_BillInvoiceMaster].[ShippingCustomerName] AS [ShippingCustomerName], 
+    [vw_BillInvoiceMaster].[ShippingAddress1] AS [ShippingAddress1], 
+    [vw_BillInvoiceMaster].[ShippingAddress2] AS [ShippingAddress2], 
+    [vw_BillInvoiceMaster].[ShippingCity] AS [ShippingCity], 
+    [vw_BillInvoiceMaster].[ShippingStateID] AS [ShippingStateID], 
+    [vw_BillInvoiceMaster].[ShippingStateName] AS [ShippingStateName], 
+    [vw_BillInvoiceMaster].[ShippingStateCode] AS [ShippingStateCode], 
+    [vw_BillInvoiceMaster].[Shippingpin] AS [Shippingpin], 
+    [vw_BillInvoiceMaster].[ShippingEmail] AS [ShippingEmail], 
+    [vw_BillInvoiceMaster].[ShippingPhone] AS [ShippingPhone], 
+    [vw_BillInvoiceMaster].[ShippingPANNo] AS [ShippingPANNo], 
+    [vw_BillInvoiceMaster].[ShippingAadharNo] AS [ShippingAadharNo], 
+    [vw_BillInvoiceMaster].[ShippingGSTINNo] AS [ShippingGSTINNo], 
+    [vw_BillInvoiceMaster].[TotalProductQuantity] AS [TotalProductQuantity], 
+    [vw_BillInvoiceMaster].[TotalTaxableAmount] AS [TotalTaxableAmount], 
+    [vw_BillInvoiceMaster].[TotalSGSTAmount] AS [TotalSGSTAmount], 
+    [vw_BillInvoiceMaster].[TotalCGSTAmount] AS [TotalCGSTAmount]
+    FROM [dbo].[vw_BillInvoiceMaster] AS [vw_BillInvoiceMaster]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_CompanyMaster" EntityType="Self.vw_CompanyMaster" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_CompanyMaster].[Id] AS [Id], 
+    [vw_CompanyMaster].[Name] AS [Name]
+    FROM [dbo].[vw_CompanyMaster] AS [vw_CompanyMaster]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_ProductMaster" EntityType="Self.vw_ProductMaster" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_ProductMaster].[Id] AS [Id], 
+    [vw_ProductMaster].[ProductName] AS [ProductName], 
+    [vw_ProductMaster].[FK_CompanyMasterID] AS [FK_CompanyMasterID], 
+    [vw_ProductMaster].[HSNCode] AS [HSNCode], 
+    [vw_ProductMaster].[UOM] AS [UOM], 
+    [vw_ProductMaster].[CompanyName] AS [CompanyName], 
+    [vw_ProductMaster].[IsActive] AS [IsActive]
+    FROM [dbo].[vw_ProductMaster] AS [vw_ProductMaster]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_ProductPrice" EntityType="Self.vw_ProductPrice" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_ProductPrice].[Id] AS [Id], 
+    [vw_ProductPrice].[FK_ProductMasterID] AS [FK_ProductMasterID], 
+    [vw_ProductPrice].[Price] AS [Price], 
+    [vw_ProductPrice].[SGSTPercentageRate] AS [SGSTPercentageRate], 
+    [vw_ProductPrice].[CGSTPercentageRate] AS [CGSTPercentageRate], 
+    [vw_ProductPrice].[ProductName] AS [ProductName], 
+    [vw_ProductPrice].[FK_CompanyMasterID] AS [FK_CompanyMasterID], 
+    [vw_ProductPrice].[HSNCode] AS [HSNCode], 
+    [vw_ProductPrice].[UOM] AS [UOM], 
+    [vw_ProductPrice].[CompanyName] AS [CompanyName], 
+    [vw_ProductPrice].[IsActive] AS [IsActive]
+    FROM [dbo].[vw_ProductPrice] AS [vw_ProductPrice]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_ShippingCustomer" EntityType="Self.vw_ShippingCustomer" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_ShippingCustomer].[ShippingID] AS [ShippingID], 
+    [vw_ShippingCustomer].[ShippingCustomer] AS [ShippingCustomer]
+    FROM [dbo].[vw_ShippingCustomer] AS [vw_ShippingCustomer]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SKSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_BillDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_BillMasterID" Type="Int64" Nullable="false" />
+          <Property Name="HSNNo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Qnty" Type="Int32" Nullable="false" />
+          <Property Name="Rate" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="UOM" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Total" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Discount" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="TaxableValue" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="SGSTRate" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="SGSTValue" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="CGSTRate" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="CGSTValue" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CompanyID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="GUID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_CompanyMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BusinessWebsite" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyShortKey" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ContactPersonName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_ProductMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_CompanyMasterID" Type="Int32" />
+          <Property Name="ProductName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HSNCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UOM" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_ProductPrice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_ProductMasterID" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="SGSTPercentageRate" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="CGSTPercentageRate" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="SKSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_BillDetails" EntityType="Self.tbl_BillDetails" />
+          <EntitySet Name="tbl_CompanyMaster" EntityType="Self.tbl_CompanyMaster" />
+          <EntitySet Name="tbl_ProductMaster" EntityType="Self.tbl_ProductMaster" />
+          <EntitySet Name="tbl_ProductPrice" EntityType="Self.tbl_ProductPrice" />
+          <EntitySet Name="tbl_BillDetails_Other" EntityType="SKSModel.tbl_BillDetails_Other" />
+          <EntitySet Name="tbl_BillDetails_temp" EntityType="SKSModel.tbl_BillDetails_temp" />
+          <EntitySet Name="tbl_CustomerBillingAddress" EntityType="SKSModel.tbl_CustomerBillingAddress" />
+          <EntitySet Name="tbl_CustomerShippingAddress" EntityType="SKSModel.tbl_CustomerShippingAddress" />
+          <EntitySet Name="tbl_SKSDetails" EntityType="SKSModel.tbl_SKSDetails" />
+          <EntitySet Name="tbl_StateMaster" EntityType="SKSModel.tbl_StateMaster" />
+          <EntitySet Name="vw_CompanyMaster" EntityType="SKSModel.vw_CompanyMaster" />
+          <EntitySet Name="vw_ProductMaster" EntityType="SKSModel.vw_ProductMaster" />
+          <EntitySet Name="vw_ProductPrice" EntityType="SKSModel.vw_ProductPrice" />
+          <EntitySet Name="vw_BillingCustomer" EntityType="SKSModel.vw_BillingCustomer" />
+          <EntitySet Name="vw_ShippingCustomer" EntityType="SKSModel.vw_ShippingCustomer" />
+          <EntitySet Name="tbl_TransportationMaster" EntityType="SKSModel.tbl_TransportationMaster" />
+          <EntitySet Name="tbl_BillMaster" EntityType="SKSModel.tbl_BillMaster" />
+          <EntitySet Name="vw_Bill_InvoiceDetails" EntityType="SKSModel.vw_Bill_InvoiceDetails" />
+          <EntitySet Name="vw_BillInvoiceMaster" EntityType="SKSModel.vw_BillInvoiceMaster" />
+          <FunctionImport Name="getInvoiceDetail" ReturnType="Collection(SKSModel.getInvoiceDetail_Result)">
+            <Parameter Name="InvoiceNo" Mode="In" Type="Int64" />
+            <Parameter Name="pagingsize" Mode="In" Type="Int32" />
+            <Parameter Name="pageno" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="tbl_ProductPriceChangesLog" EntityType="SKSModel.tbl_ProductPriceChangesLog" />
+          <EntitySet Name="tbl_Users" EntityType="SKSModel.tbl_Users" />
+        </EntityContainer>
+        <EntityType Name="tbl_BillDetails_Other">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="FK_BillMasterID" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_BillMasterID" Type="Int64" Nullable="false" />
+          <Property Name="FreightCharges" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="LoadingnPackingCharges" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="INsuranceCharges" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="OtherCharges" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_BillDetails_temp">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HSNNo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Qnty" Type="Int32" />
+          <Property Name="Rate" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="UOM" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Total" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Discount" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="TaxableValue" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="SGSTRate" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="SGSTValue" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="CGSTRate" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="CGSTValue" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="GUID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CompanyID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Company" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Product" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_CustomerBillingAddress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BillingAddress1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BillingAddress2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BillingCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FK_StateID" Type="Int32" />
+          <Property Name="Billingpin" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="BillingEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BillingPhone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BillingPANNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="BillingAadharNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="BillingGSTINNo" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="GUID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RetailerShopName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="BillingProprietorName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_CustomerShippingAddress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ShippingAddress1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ShippingAddress2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ShippingCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FK_StateID" Type="Int32" />
+          <Property Name="Shippingpin" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="ShippingEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ShippingPhone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ShippingPANNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ShippingAadharNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ShippingGSTINNo" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="GUID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShippingRetailerShopName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ShippingProprietorName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_SKSDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShopName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ShopProperiterName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ShopAddressLine1" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ShopAddressLine2" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ShopCity" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ShopState" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ShopPin" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ShopPhoneNo" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ShopEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ShopWebsite" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ShopGSTINNo" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ShopPropriterSignature" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ContactPersonName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ShopPAN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_StateMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="StateCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vw_CompanyMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_ProductMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="CompanyName" />
+            <PropertyRef Name="IsActive" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FK_CompanyMasterID" Type="Int32" />
+          <Property Name="HSNCode" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UOM" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vw_ProductPrice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_ProductMasterID" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="SGSTPercentageRate" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+          <Property Name="CGSTPercentageRate" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FK_CompanyMasterID" Type="Int32" />
+          <Property Name="HSNCode" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UOM" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vw_BillingCustomer">
+          <Key>
+            <PropertyRef Name="BillingID" />
+          </Key>
+          <Property Name="BillingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BillingCustomer" Type="String" MaxLength="1136" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_ShippingCustomer">
+          <Key>
+            <PropertyRef Name="ShippingID" />
+          </Key>
+          <Property Name="ShippingCustomer" Type="String" MaxLength="1136" FixedLength="false" Unicode="false" />
+          <Property Name="ShippingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="tbl_TransportationMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TransportationName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_BillMaster">
+          <Key>
+            <PropertyRef Name="BillId" />
+          </Key>
+          <Property Name="BillId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FinancialYear" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="InvoiceDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FK_BillingCustomerID" Type="Int32" Nullable="false" />
+          <Property Name="FK_ShippingCustomerID" Type="Int32" Nullable="false" />
+          <Property Name="InvoiceTotalAmount" Type="Decimal" Nullable="false" Precision="20" Scale="2" />
+          <Property Name="TotalDiscountonInvoice" Type="Decimal" Nullable="false" Precision="20" Scale="2" />
+          <Property Name="TotalCollectedAmount" Type="Decimal" Nullable="false" Precision="20" Scale="2" />
+          <Property Name="FreightCharges" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="LoadingnPackingCharges" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="InsuranceCharges" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="OtherCharges" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="TransportationMode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VehivleNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateNSupplyofTime" Type="DateTime" Precision="3" />
+          <Property Name="PlaceofSupply" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InvoiceStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GUID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="TotalTaxableAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TotalSGSTAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TotalCGSTAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TotalProductQuantity" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vw_Bill_InvoiceDetails">
+          <Key>
+            <PropertyRef Name="InvoiceNo" />
+            <PropertyRef Name="CompanyID" />
+            <PropertyRef Name="CompanyName" />
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="ProductName" />
+            <PropertyRef Name="HSNNo" />
+            <PropertyRef Name="Qnty" />
+            <PropertyRef Name="Rate" />
+            <PropertyRef Name="UOM" />
+            <PropertyRef Name="Total" />
+            <PropertyRef Name="Discount" />
+            <PropertyRef Name="TaxableValue" />
+            <PropertyRef Name="SGSTRate" />
+            <PropertyRef Name="SGSTValue" />
+            <PropertyRef Name="CGSTRate" />
+            <PropertyRef Name="CGSTValue" />
+          </Key>
+          <Property Name="InvoiceNo" Type="Int64" Nullable="false" />
+          <Property Name="CompanyID" Type="Int32" Nullable="false" />
+          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="HSNNo" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Qnty" Type="Int32" Nullable="false" />
+          <Property Name="Rate" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="UOM" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Total" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="Discount" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="TaxableValue" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="SGSTRate" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="SGSTValue" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="CGSTRate" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="CGSTValue" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="vw_BillInvoiceMaster">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+            <PropertyRef Name="FinancialYear" />
+            <PropertyRef Name="InvoiceDate" />
+            <PropertyRef Name="FK_BillingCustomerID" />
+            <PropertyRef Name="FK_ShippingCustomerID" />
+            <PropertyRef Name="InvoiceTotalAmount" />
+            <PropertyRef Name="TotalDiscountonInvoice" />
+            <PropertyRef Name="TotalCollectedAmount" />
+            <PropertyRef Name="CustomerName" />
+            <PropertyRef Name="ShippingCustomerName" />
+          </Key>
+          <Property Name="InvoiceID" Type="Int64" Nullable="false" />
+          <Property Name="FinancialYear" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="InvoiceDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FK_BillingCustomerID" Type="Int32" Nullable="false" />
+          <Property Name="FK_ShippingCustomerID" Type="Int32" Nullable="false" />
+          <Property Name="InvoiceTotalAmount" Type="Decimal" Nullable="false" Precision="20" Scale="2" />
+          <Property Name="TotalDiscountonInvoice" Type="Decimal" Nullable="false" Precision="20" Scale="2" />
+          <Property Name="TotalCollectedAmount" Type="Decimal" Nullable="false" Precision="20" Scale="2" />
+          <Property Name="FreightCharges" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="LoadingnPackingCharges" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="InsuranceCharges" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="OtherCharges" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="TransportationMode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="VehivleNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateNSupplyofTime" Type="DateTime" Precision="3" />
+          <Property Name="PlaceofSupply" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RetailerShopName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BillingAddress1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BillingAddress2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BillingCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BillingStateID" Type="Int32" />
+          <Property Name="BillingStateName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Billingpin" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="BillingEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BillingPhone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BillingPANNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="BillingAadharNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="BillingGSTINNo" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ShippingRetailerShopName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ShippingCustomerName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ShippingAddress1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ShippingAddress2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ShippingCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShippingStateID" Type="Int32" />
+          <Property Name="ShippingStateName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Shippingpin" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="ShippingEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ShippingPhone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ShippingPANNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ShippingAadharNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ShippingGSTINNo" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="BillingStateCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ShippingStateCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TotalTaxableAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TotalSGSTAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TotalCGSTAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TotalProductQuantity" Type="Int32" />
+        </EntityType>
+        <ComplexType Name="getInvoiceDetail_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="ShopName" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="ShopProperiterName" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="ShopAddressLine1" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="ShopAddressLine2" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="ShopCity" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="ShopState" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="ShopPin" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="ShopPhoneNo" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="ShopEmail" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="MobileNo" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="ShopWebsite" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="ShopGSTINNo" Nullable="true" MaxLength="25" />
+          <Property Type="Binary" Name="ShopPropriterSignature" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="ContactPersonName" Nullable="true" MaxLength="255" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="true" />
+          <Property Type="String" Name="CreatedBy" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+          <Property Type="String" Name="UpdatedBy" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="true" Precision="23" />
+        </ComplexType>
+        <EntityType Name="tbl_ProductPriceChangesLog">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PriceChangeDate" Type="DateTime" Precision="3" />
+          <Property Name="HasPriceChanged" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_Users">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="IsDeleted" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="UserRole" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="GUID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SKSModelStoreContainer" CdmEntityContainer="SKSEntities">
+          <EntitySetMapping Name="tbl_BillDetails">
+            <EntityTypeMapping TypeName="SKSModel.tbl_BillDetails">
+              <MappingFragment StoreEntitySet="tbl_BillDetails">
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FK_BillMasterID" ColumnName="FK_BillMasterID" />
+                <ScalarProperty Name="HSNNo" ColumnName="HSNNo" />
+                <ScalarProperty Name="Qnty" ColumnName="Qnty" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="UOM" ColumnName="UOM" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="TaxableValue" ColumnName="TaxableValue" />
+                <ScalarProperty Name="SGSTRate" ColumnName="SGSTRate" />
+                <ScalarProperty Name="SGSTValue" ColumnName="SGSTValue" />
+                <ScalarProperty Name="CGSTRate" ColumnName="CGSTRate" />
+                <ScalarProperty Name="CGSTValue" ColumnName="CGSTValue" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_CompanyMaster">
+            <EntityTypeMapping TypeName="SKSModel.tbl_CompanyMaster">
+              <MappingFragment StoreEntitySet="tbl_CompanyMaster">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="BusinessWebsite" ColumnName="BusinessWebsite" />
+                <ScalarProperty Name="CompanyShortKey" ColumnName="CompanyShortKey" />
+                <ScalarProperty Name="ContactPersonName" ColumnName="ContactPersonName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ProductMaster">
+            <EntityTypeMapping TypeName="SKSModel.tbl_ProductMaster">
+              <MappingFragment StoreEntitySet="tbl_ProductMaster">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FK_CompanyMasterID" ColumnName="FK_CompanyMasterID" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="HSNCode" ColumnName="HSNCode" />
+                <ScalarProperty Name="UOM" ColumnName="UOM" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ProductPrice">
+            <EntityTypeMapping TypeName="SKSModel.tbl_ProductPrice">
+              <MappingFragment StoreEntitySet="tbl_ProductPrice">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FK_ProductMasterID" ColumnName="FK_ProductMasterID" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="SGSTPercentageRate" ColumnName="SGSTPercentageRate" />
+                <ScalarProperty Name="CGSTPercentageRate" ColumnName="CGSTPercentageRate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_BillDetails_Other">
+            <EntityTypeMapping TypeName="SKSModel.tbl_BillDetails_Other">
+              <MappingFragment StoreEntitySet="tbl_BillDetails_Other">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="OtherCharges" ColumnName="OtherCharges" />
+                <ScalarProperty Name="INsuranceCharges" ColumnName="INsuranceCharges" />
+                <ScalarProperty Name="LoadingnPackingCharges" ColumnName="LoadingnPackingCharges" />
+                <ScalarProperty Name="FreightCharges" ColumnName="FreightCharges" />
+                <ScalarProperty Name="FK_BillMasterID" ColumnName="FK_BillMasterID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_BillDetails_temp">
+            <EntityTypeMapping TypeName="SKSModel.tbl_BillDetails_temp">
+              <MappingFragment StoreEntitySet="tbl_BillDetails_temp">
+                <ScalarProperty Name="Product" ColumnName="Product" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CGSTValue" ColumnName="CGSTValue" />
+                <ScalarProperty Name="CGSTRate" ColumnName="CGSTRate" />
+                <ScalarProperty Name="SGSTValue" ColumnName="SGSTValue" />
+                <ScalarProperty Name="SGSTRate" ColumnName="SGSTRate" />
+                <ScalarProperty Name="TaxableValue" ColumnName="TaxableValue" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="UOM" ColumnName="UOM" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Qnty" ColumnName="Qnty" />
+                <ScalarProperty Name="HSNNo" ColumnName="HSNNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_CustomerBillingAddress">
+            <EntityTypeMapping TypeName="SKSModel.tbl_CustomerBillingAddress">
+              <MappingFragment StoreEntitySet="tbl_CustomerBillingAddress">
+                <ScalarProperty Name="BillingProprietorName" ColumnName="BillingProprietorName" />
+                <ScalarProperty Name="RetailerShopName" ColumnName="RetailerShopName" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="BillingGSTINNo" ColumnName="BillingGSTINNo" />
+                <ScalarProperty Name="BillingAadharNo" ColumnName="BillingAadharNo" />
+                <ScalarProperty Name="BillingPANNo" ColumnName="BillingPANNo" />
+                <ScalarProperty Name="BillingPhone" ColumnName="BillingPhone" />
+                <ScalarProperty Name="BillingEmail" ColumnName="BillingEmail" />
+                <ScalarProperty Name="Billingpin" ColumnName="Billingpin" />
+                <ScalarProperty Name="FK_StateID" ColumnName="FK_StateID" />
+                <ScalarProperty Name="BillingCity" ColumnName="BillingCity" />
+                <ScalarProperty Name="BillingAddress2" ColumnName="BillingAddress2" />
+                <ScalarProperty Name="BillingAddress1" ColumnName="BillingAddress1" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_CustomerShippingAddress">
+            <EntityTypeMapping TypeName="SKSModel.tbl_CustomerShippingAddress">
+              <MappingFragment StoreEntitySet="tbl_CustomerShippingAddress">
+                <ScalarProperty Name="ShippingProprietorName" ColumnName="ShippingProprietorName" />
+                <ScalarProperty Name="ShippingRetailerShopName" ColumnName="ShippingRetailerShopName" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ShippingGSTINNo" ColumnName="ShippingGSTINNo" />
+                <ScalarProperty Name="ShippingAadharNo" ColumnName="ShippingAadharNo" />
+                <ScalarProperty Name="ShippingPANNo" ColumnName="ShippingPANNo" />
+                <ScalarProperty Name="ShippingPhone" ColumnName="ShippingPhone" />
+                <ScalarProperty Name="ShippingEmail" ColumnName="ShippingEmail" />
+                <ScalarProperty Name="Shippingpin" ColumnName="Shippingpin" />
+                <ScalarProperty Name="FK_StateID" ColumnName="FK_StateID" />
+                <ScalarProperty Name="ShippingCity" ColumnName="ShippingCity" />
+                <ScalarProperty Name="ShippingAddress2" ColumnName="ShippingAddress2" />
+                <ScalarProperty Name="ShippingAddress1" ColumnName="ShippingAddress1" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_SKSDetails">
+            <EntityTypeMapping TypeName="SKSModel.tbl_SKSDetails">
+              <MappingFragment StoreEntitySet="tbl_SKSDetails">
+                <ScalarProperty Name="ShopPAN" ColumnName="ShopPAN" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ContactPersonName" ColumnName="ContactPersonName" />
+                <ScalarProperty Name="ShopPropriterSignature" ColumnName="ShopPropriterSignature" />
+                <ScalarProperty Name="ShopGSTINNo" ColumnName="ShopGSTINNo" />
+                <ScalarProperty Name="ShopWebsite" ColumnName="ShopWebsite" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="ShopEmail" ColumnName="ShopEmail" />
+                <ScalarProperty Name="ShopPhoneNo" ColumnName="ShopPhoneNo" />
+                <ScalarProperty Name="ShopPin" ColumnName="ShopPin" />
+                <ScalarProperty Name="ShopState" ColumnName="ShopState" />
+                <ScalarProperty Name="ShopCity" ColumnName="ShopCity" />
+                <ScalarProperty Name="ShopAddressLine2" ColumnName="ShopAddressLine2" />
+                <ScalarProperty Name="ShopAddressLine1" ColumnName="ShopAddressLine1" />
+                <ScalarProperty Name="ShopProperiterName" ColumnName="ShopProperiterName" />
+                <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_StateMaster">
+            <EntityTypeMapping TypeName="SKSModel.tbl_StateMaster">
+              <MappingFragment StoreEntitySet="tbl_StateMaster">
+                <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_CompanyMaster">
+            <EntityTypeMapping TypeName="SKSModel.vw_CompanyMaster">
+              <MappingFragment StoreEntitySet="vw_CompanyMaster">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_ProductMaster">
+            <EntityTypeMapping TypeName="SKSModel.vw_ProductMaster">
+              <MappingFragment StoreEntitySet="vw_ProductMaster">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="UOM" ColumnName="UOM" />
+                <ScalarProperty Name="HSNCode" ColumnName="HSNCode" />
+                <ScalarProperty Name="FK_CompanyMasterID" ColumnName="FK_CompanyMasterID" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_ProductPrice">
+            <EntityTypeMapping TypeName="SKSModel.vw_ProductPrice">
+              <MappingFragment StoreEntitySet="vw_ProductPrice">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="UOM" ColumnName="UOM" />
+                <ScalarProperty Name="HSNCode" ColumnName="HSNCode" />
+                <ScalarProperty Name="FK_CompanyMasterID" ColumnName="FK_CompanyMasterID" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="CGSTPercentageRate" ColumnName="CGSTPercentageRate" />
+                <ScalarProperty Name="SGSTPercentageRate" ColumnName="SGSTPercentageRate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="FK_ProductMasterID" ColumnName="FK_ProductMasterID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_BillingCustomer">
+            <EntityTypeMapping TypeName="SKSModel.vw_BillingCustomer">
+              <MappingFragment StoreEntitySet="vw_BillingCustomer">
+                <ScalarProperty Name="BillingCustomer" ColumnName="BillingCustomer" />
+                <ScalarProperty Name="BillingID" ColumnName="BillingID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_ShippingCustomer">
+            <EntityTypeMapping TypeName="SKSModel.vw_ShippingCustomer">
+              <MappingFragment StoreEntitySet="vw_ShippingCustomer">
+                <ScalarProperty Name="ShippingID" ColumnName="ShippingID" />
+                <ScalarProperty Name="ShippingCustomer" ColumnName="ShippingCustomer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_TransportationMaster">
+            <EntityTypeMapping TypeName="SKSModel.tbl_TransportationMaster">
+              <MappingFragment StoreEntitySet="tbl_TransportationMaster">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="TransportationName" ColumnName="TransportationName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_BillMaster">
+            <EntityTypeMapping TypeName="SKSModel.tbl_BillMaster">
+              <MappingFragment StoreEntitySet="tbl_BillMaster">
+                <ScalarProperty Name="TotalProductQuantity" ColumnName="TotalProductQuantity" />
+                <ScalarProperty Name="TotalCGSTAmount" ColumnName="TotalCGSTAmount" />
+                <ScalarProperty Name="TotalSGSTAmount" ColumnName="TotalSGSTAmount" />
+                <ScalarProperty Name="TotalTaxableAmount" ColumnName="TotalTaxableAmount" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="InvoiceStatus" ColumnName="InvoiceStatus" />
+                <ScalarProperty Name="PlaceofSupply" ColumnName="PlaceofSupply" />
+                <ScalarProperty Name="DateNSupplyofTime" ColumnName="DateNSupplyofTime" />
+                <ScalarProperty Name="VehivleNumber" ColumnName="VehivleNumber" />
+                <ScalarProperty Name="TransportationMode" ColumnName="TransportationMode" />
+                <ScalarProperty Name="OtherCharges" ColumnName="OtherCharges" />
+                <ScalarProperty Name="InsuranceCharges" ColumnName="InsuranceCharges" />
+                <ScalarProperty Name="LoadingnPackingCharges" ColumnName="LoadingnPackingCharges" />
+                <ScalarProperty Name="FreightCharges" ColumnName="FreightCharges" />
+                <ScalarProperty Name="TotalCollectedAmount" ColumnName="TotalCollectedAmount" />
+                <ScalarProperty Name="TotalDiscountonInvoice" ColumnName="TotalDiscountonInvoice" />
+                <ScalarProperty Name="InvoiceTotalAmount" ColumnName="InvoiceTotalAmount" />
+                <ScalarProperty Name="FK_ShippingCustomerID" ColumnName="FK_ShippingCustomerID" />
+                <ScalarProperty Name="FK_BillingCustomerID" ColumnName="FK_BillingCustomerID" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="FinancialYear" ColumnName="FinancialYear" />
+                <ScalarProperty Name="BillId" ColumnName="BillId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_Bill_InvoiceDetails">
+            <EntityTypeMapping TypeName="SKSModel.vw_Bill_InvoiceDetails">
+              <MappingFragment StoreEntitySet="vw_Bill_InvoiceDetails">
+                <ScalarProperty Name="CGSTValue" ColumnName="CGSTValue" />
+                <ScalarProperty Name="CGSTRate" ColumnName="CGSTRate" />
+                <ScalarProperty Name="SGSTValue" ColumnName="SGSTValue" />
+                <ScalarProperty Name="SGSTRate" ColumnName="SGSTRate" />
+                <ScalarProperty Name="TaxableValue" ColumnName="TaxableValue" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="UOM" ColumnName="UOM" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Qnty" ColumnName="Qnty" />
+                <ScalarProperty Name="HSNNo" ColumnName="HSNNo" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_BillInvoiceMaster">
+            <EntityTypeMapping TypeName="SKSModel.vw_BillInvoiceMaster">
+              <MappingFragment StoreEntitySet="vw_BillInvoiceMaster">
+                <ScalarProperty Name="TotalProductQuantity" ColumnName="TotalProductQuantity" />
+                <ScalarProperty Name="TotalCGSTAmount" ColumnName="TotalCGSTAmount" />
+                <ScalarProperty Name="TotalSGSTAmount" ColumnName="TotalSGSTAmount" />
+                <ScalarProperty Name="TotalTaxableAmount" ColumnName="TotalTaxableAmount" />
+                <ScalarProperty Name="ShippingStateCode" ColumnName="ShippingStateCode" />
+                <ScalarProperty Name="BillingStateCode" ColumnName="BillingStateCode" />
+                <ScalarProperty Name="ShippingGSTINNo" ColumnName="ShippingGSTINNo" />
+                <ScalarProperty Name="ShippingAadharNo" ColumnName="ShippingAadharNo" />
+                <ScalarProperty Name="ShippingPANNo" ColumnName="ShippingPANNo" />
+                <ScalarProperty Name="ShippingPhone" ColumnName="ShippingPhone" />
+                <ScalarProperty Name="ShippingEmail" ColumnName="ShippingEmail" />
+                <ScalarProperty Name="Shippingpin" ColumnName="Shippingpin" />
+                <ScalarProperty Name="ShippingStateName" ColumnName="ShippingStateName" />
+                <ScalarProperty Name="ShippingStateID" ColumnName="ShippingStateID" />
+                <ScalarProperty Name="ShippingCity" ColumnName="ShippingCity" />
+                <ScalarProperty Name="ShippingAddress2" ColumnName="ShippingAddress2" />
+                <ScalarProperty Name="ShippingAddress1" ColumnName="ShippingAddress1" />
+                <ScalarProperty Name="ShippingCustomerName" ColumnName="ShippingCustomerName" />
+                <ScalarProperty Name="ShippingRetailerShopName" ColumnName="ShippingRetailerShopName" />
+                <ScalarProperty Name="BillingGSTINNo" ColumnName="BillingGSTINNo" />
+                <ScalarProperty Name="BillingAadharNo" ColumnName="BillingAadharNo" />
+                <ScalarProperty Name="BillingPANNo" ColumnName="BillingPANNo" />
+                <ScalarProperty Name="BillingPhone" ColumnName="BillingPhone" />
+                <ScalarProperty Name="BillingEmail" ColumnName="BillingEmail" />
+                <ScalarProperty Name="Billingpin" ColumnName="Billingpin" />
+                <ScalarProperty Name="BillingStateName" ColumnName="BillingStateName" />
+                <ScalarProperty Name="BillingStateID" ColumnName="BillingStateID" />
+                <ScalarProperty Name="BillingCity" ColumnName="BillingCity" />
+                <ScalarProperty Name="BillingAddress2" ColumnName="BillingAddress2" />
+                <ScalarProperty Name="BillingAddress1" ColumnName="BillingAddress1" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="RetailerShopName" ColumnName="RetailerShopName" />
+                <ScalarProperty Name="PlaceofSupply" ColumnName="PlaceofSupply" />
+                <ScalarProperty Name="DateNSupplyofTime" ColumnName="DateNSupplyofTime" />
+                <ScalarProperty Name="VehivleNumber" ColumnName="VehivleNumber" />
+                <ScalarProperty Name="TransportationMode" ColumnName="TransportationMode" />
+                <ScalarProperty Name="OtherCharges" ColumnName="OtherCharges" />
+                <ScalarProperty Name="InsuranceCharges" ColumnName="InsuranceCharges" />
+                <ScalarProperty Name="LoadingnPackingCharges" ColumnName="LoadingnPackingCharges" />
+                <ScalarProperty Name="FreightCharges" ColumnName="FreightCharges" />
+                <ScalarProperty Name="TotalCollectedAmount" ColumnName="TotalCollectedAmount" />
+                <ScalarProperty Name="TotalDiscountonInvoice" ColumnName="TotalDiscountonInvoice" />
+                <ScalarProperty Name="InvoiceTotalAmount" ColumnName="InvoiceTotalAmount" />
+                <ScalarProperty Name="FK_ShippingCustomerID" ColumnName="FK_ShippingCustomerID" />
+                <ScalarProperty Name="FK_BillingCustomerID" ColumnName="FK_BillingCustomerID" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="FinancialYear" ColumnName="FinancialYear" />
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="getInvoiceDetail" FunctionName="SKSModel.Store.getInvoiceDetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SKSModel.getInvoiceDetail_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+                <ScalarProperty Name="ShopProperiterName" ColumnName="ShopProperiterName" />
+                <ScalarProperty Name="ShopAddressLine1" ColumnName="ShopAddressLine1" />
+                <ScalarProperty Name="ShopAddressLine2" ColumnName="ShopAddressLine2" />
+                <ScalarProperty Name="ShopCity" ColumnName="ShopCity" />
+                <ScalarProperty Name="ShopState" ColumnName="ShopState" />
+                <ScalarProperty Name="ShopPin" ColumnName="ShopPin" />
+                <ScalarProperty Name="ShopPhoneNo" ColumnName="ShopPhoneNo" />
+                <ScalarProperty Name="ShopEmail" ColumnName="ShopEmail" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="ShopWebsite" ColumnName="ShopWebsite" />
+                <ScalarProperty Name="ShopGSTINNo" ColumnName="ShopGSTINNo" />
+                <ScalarProperty Name="ShopPropriterSignature" ColumnName="ShopPropriterSignature" />
+                <ScalarProperty Name="ContactPersonName" ColumnName="ContactPersonName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="tbl_ProductPriceChangesLog">
+            <EntityTypeMapping TypeName="SKSModel.tbl_ProductPriceChangesLog">
+              <MappingFragment StoreEntitySet="tbl_ProductPriceChangesLog">
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="HasPriceChanged" ColumnName="HasPriceChanged" />
+                <ScalarProperty Name="PriceChangeDate" ColumnName="PriceChangeDate" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Users">
+            <EntityTypeMapping TypeName="SKSModel.tbl_Users">
+              <MappingFragment StoreEntitySet="tbl_Users">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

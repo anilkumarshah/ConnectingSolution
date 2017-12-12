@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsInvoiceDetails" targetNamespace="http://tempuri.org/dsInvoiceDetails.xsd" xmlns:mstns="http://tempuri.org/dsInvoiceDetails.xsd" xmlns="http://tempuri.org/dsInvoiceDetails.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="SKSConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SKSConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.SKSConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vw_Bill_InvoiceDetailsTableAdapter" GeneratorDataComponentClassName="vw_Bill_InvoiceDetailsTableAdapter" Name="vw_Bill_InvoiceDetails" UserDataComponentName="vw_Bill_InvoiceDetailsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SKSConnectionString (Web.config)" DbObjectName="SKS.dbo.vw_Bill_InvoiceDetails" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>select * from vw_Bill_InvoiceDetails</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="InvoiceNo" DataSetColumn="InvoiceNo" />
+              <Mapping SourceColumn="CompanyID" DataSetColumn="CompanyID" />
+              <Mapping SourceColumn="CompanyName" DataSetColumn="CompanyName" />
+              <Mapping SourceColumn="ProductID" DataSetColumn="ProductID" />
+              <Mapping SourceColumn="ProductName" DataSetColumn="ProductName" />
+              <Mapping SourceColumn="HSNNo" DataSetColumn="HSNNo" />
+              <Mapping SourceColumn="Qnty" DataSetColumn="Qnty" />
+              <Mapping SourceColumn="Rate" DataSetColumn="Rate" />
+              <Mapping SourceColumn="UOM" DataSetColumn="UOM" />
+              <Mapping SourceColumn="Total" DataSetColumn="Total" />
+              <Mapping SourceColumn="Discount" DataSetColumn="Discount" />
+              <Mapping SourceColumn="TaxableValue" DataSetColumn="TaxableValue" />
+              <Mapping SourceColumn="SGSTRate" DataSetColumn="SGSTRate" />
+              <Mapping SourceColumn="SGSTValue" DataSetColumn="SGSTValue" />
+              <Mapping SourceColumn="CGSTRate" DataSetColumn="CGSTRate" />
+              <Mapping SourceColumn="CGSTValue" DataSetColumn="CGSTValue" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsInvoiceDetails" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="dsInvoiceDetails" msprop:Generator_UserDSName="dsInvoiceDetails">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="vw_Bill_InvoiceDetails" msprop:Generator_TableClassName="vw_Bill_InvoiceDetailsDataTable" msprop:Generator_TableVarName="tablevw_Bill_InvoiceDetails" msprop:Generator_TablePropName="vw_Bill_InvoiceDetails" msprop:Generator_RowDeletingName="vw_Bill_InvoiceDetailsRowDeleting" msprop:Generator_RowChangingName="vw_Bill_InvoiceDetailsRowChanging" msprop:Generator_RowEvHandlerName="vw_Bill_InvoiceDetailsRowChangeEventHandler" msprop:Generator_RowDeletedName="vw_Bill_InvoiceDetailsRowDeleted" msprop:Generator_UserTableName="vw_Bill_InvoiceDetails" msprop:Generator_RowChangedName="vw_Bill_InvoiceDetailsRowChanged" msprop:Generator_RowEvArgName="vw_Bill_InvoiceDetailsRowChangeEvent" msprop:Generator_RowClassName="vw_Bill_InvoiceDetailsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="InvoiceNo" msprop:Generator_ColumnVarNameInTable="columnInvoiceNo" msprop:Generator_ColumnPropNameInRow="InvoiceNo" msprop:Generator_ColumnPropNameInTable="InvoiceNoColumn" msprop:Generator_UserColumnName="InvoiceNo" type="xs:long" />
+              <xs:element name="CompanyID" msprop:Generator_ColumnVarNameInTable="columnCompanyID" msprop:Generator_ColumnPropNameInRow="CompanyID" msprop:Generator_ColumnPropNameInTable="CompanyIDColumn" msprop:Generator_UserColumnName="CompanyID" type="xs:int" />
+              <xs:element name="CompanyName" msprop:Generator_ColumnVarNameInTable="columnCompanyName" msprop:Generator_ColumnPropNameInRow="CompanyName" msprop:Generator_ColumnPropNameInTable="CompanyNameColumn" msprop:Generator_UserColumnName="CompanyName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ProductID" msprop:Generator_ColumnVarNameInTable="columnProductID" msprop:Generator_ColumnPropNameInRow="ProductID" msprop:Generator_ColumnPropNameInTable="ProductIDColumn" msprop:Generator_UserColumnName="ProductID" type="xs:int" />
+              <xs:element name="ProductName" msprop:Generator_ColumnVarNameInTable="columnProductName" msprop:Generator_ColumnPropNameInRow="ProductName" msprop:Generator_ColumnPropNameInTable="ProductNameColumn" msprop:Generator_UserColumnName="ProductName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="HSNNo" msprop:Generator_ColumnVarNameInTable="columnHSNNo" msprop:Generator_ColumnPropNameInRow="HSNNo" msprop:Generator_ColumnPropNameInTable="HSNNoColumn" msprop:Generator_UserColumnName="HSNNo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Qnty" msprop:Generator_ColumnVarNameInTable="columnQnty" msprop:Generator_ColumnPropNameInRow="Qnty" msprop:Generator_ColumnPropNameInTable="QntyColumn" msprop:Generator_UserColumnName="Qnty" type="xs:int" />
+              <xs:element name="Rate" msprop:Generator_ColumnVarNameInTable="columnRate" msprop:Generator_ColumnPropNameInRow="Rate" msprop:Generator_ColumnPropNameInTable="RateColumn" msprop:Generator_UserColumnName="Rate" type="xs:decimal" />
+              <xs:element name="UOM" msprop:Generator_ColumnVarNameInTable="columnUOM" msprop:Generator_ColumnPropNameInRow="UOM" msprop:Generator_ColumnPropNameInTable="UOMColumn" msprop:Generator_UserColumnName="UOM">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Total" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_UserColumnName="Total" type="xs:decimal" />
+              <xs:element name="Discount" msprop:Generator_ColumnVarNameInTable="columnDiscount" msprop:Generator_ColumnPropNameInRow="Discount" msprop:Generator_ColumnPropNameInTable="DiscountColumn" msprop:Generator_UserColumnName="Discount" type="xs:decimal" />
+              <xs:element name="TaxableValue" msprop:Generator_ColumnVarNameInTable="columnTaxableValue" msprop:Generator_ColumnPropNameInRow="TaxableValue" msprop:Generator_ColumnPropNameInTable="TaxableValueColumn" msprop:Generator_UserColumnName="TaxableValue" type="xs:decimal" />
+              <xs:element name="SGSTRate" msprop:Generator_ColumnVarNameInTable="columnSGSTRate" msprop:Generator_ColumnPropNameInRow="SGSTRate" msprop:Generator_ColumnPropNameInTable="SGSTRateColumn" msprop:Generator_UserColumnName="SGSTRate" type="xs:decimal" />
+              <xs:element name="SGSTValue" msprop:Generator_ColumnVarNameInTable="columnSGSTValue" msprop:Generator_ColumnPropNameInRow="SGSTValue" msprop:Generator_ColumnPropNameInTable="SGSTValueColumn" msprop:Generator_UserColumnName="SGSTValue" type="xs:decimal" />
+              <xs:element name="CGSTRate" msprop:Generator_ColumnVarNameInTable="columnCGSTRate" msprop:Generator_ColumnPropNameInRow="CGSTRate" msprop:Generator_ColumnPropNameInTable="CGSTRateColumn" msprop:Generator_UserColumnName="CGSTRate" type="xs:decimal" />
+              <xs:element name="CGSTValue" msprop:Generator_ColumnVarNameInTable="columnCGSTValue" msprop:Generator_ColumnPropNameInRow="CGSTValue" msprop:Generator_ColumnPropNameInTable="CGSTValueColumn" msprop:Generator_UserColumnName="CGSTValue" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

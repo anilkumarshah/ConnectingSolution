@@ -1,0 +1,306 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+
+
+    </script>
+    <script type="text/javascript">
+
+        $('.form_date').datetimepicker({
+            language: 'en',
+            weekStart: 1,
+            todayBtn: 1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0
+        });
+
+    </script>
+</head>
+<body>
+    <form id="form1" role="form">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="" data-target="#myNavbar">
+                        <span class="icon-bar">a</span>
+                        <span class="icon-bar">s</span>
+                        <span class="icon-bar">d</span>
+                    </button>
+                    <a class="navbar-brand" href="home.html">DMT Express </a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="home.html">Home</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">UDIO DMT <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="QueryCustomer.html">Query Customer</a></li>
+                                <li><a href="UDIODMTTxnHistory.html">DMT Transaction</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">UDIO Wallet <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="CardQueryCustomer.html">Query Customer</a></li>
+                                <li><a href="UDIOCardTxnHistory.html">Card Transaction</a></li>
+
+                            </ul>
+                        </li>
+
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span>Welcome  <span class="badge">Agent</span></a> </li>
+                        <li><a href="Login.html"><span class="glyphicon glyphicon-log-out"></span>Log out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container form-group">
+            <div class="panel panel-default">
+                <div class="panel-heading text-uppercase">Customer Beneficiary List</div>
+                <div class="panel-body">
+                    <div class="text-right">
+
+
+                        <input type="button" class="btn btn-primary " value="Add Beneficiary" id="btnAddbene1" onclick="location.href = 'AddBene.html';" />
+                    </div>
+                    <div class="form-group text-center">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label for="usr">Mobile No:</label>
+
+                                <label class="text-info">
+                                    XXXXXXXXXX
+                                </label>
+                            </div>
+                            <div class="col-xs-3">
+                                <label for="usr">Name:</label>
+
+                                <label class="text-info">
+                                    Anil Shah
+                                </label>
+                            </div>
+                            <div class="col-xs-3">
+                                <label for="usr">Available Limit:</label>
+                                <label class="text-info">
+                                    14000
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label for="usr">Account No:</label>
+
+                                <label class="text-info">
+                                    XXXXXXXXXX
+                                </label>
+                            </div>
+                            <div class="col-xs-3">
+                                <label for="usr">Bank Name:</label>
+
+                                <label class="text-info">
+                                    XXXXXXXXXXX
+                                </label>
+                            </div>
+                            <div class="col-xs-3">
+                                <label for="usr">IFSC Code:</label>
+                                <label class="text-info">
+                                    IFSC0000000
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>Sr. No</th>
+                                    <th>Name</th>
+                                    <th>Bank</th>
+                                    <th>Account No</th>
+                                    <th>IFSC Code</th>
+                                    <th>Status</th>
+                                    <th>Amount</th>
+                                    <th>NEFT</th>
+                                    <th>IMPS</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Anil Shah</td>
+                                    <td>ICICI</td>
+                                    <td>09879765436</td>
+                                    <td>ICIC0001230</td>
+                                    <td>Active</td>
+                                    <td>
+                                        <input type="text" class="form-control" placeholder="Enter Amount" />
+                                    </td>
+                                    <td>
+                                        <input type="button" class="btn btn-primary" value="NEFT" data-toggle="modal" data-target="#DMTTxnStatus" />
+                                    </td>
+                                    <td>
+                                        <input type="button" class="btn btn-primary" value="IMPS" data-toggle="modal" data-target="#DMTTxnStatus" />
+                                    </td>
+                                    <td></td>
+                                    <td><span data-toggle="modal" data-target="#DeleteBene"><a href="#" class="form-group" data-toggle="tooltip" title="Delete" data-placement="top"><span class="glyphicon glyphicon-trash"></span></a></span></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Amit Sanaye</td>
+                                    <td>Bank of India</td>
+                                    <td>76543098786</td>
+                                    <td>BKID0000001</td>
+                                    <td>Active</td>
+                                    <td>
+                                        <input type="text" class="form-control form-group-sm" placeholder="Enter Amount" />
+                                    </td>
+                                    <td>
+                                        <input type="button" class="btn btn-primary" value="NEFT" data-toggle="modal" data-target="#DMTTxnStatus" />
+                                    </td>
+                                    <td>
+                                        <input type="button" class="btn btn-primary " value="IMPS" data-toggle="modal" data-target="#DMTTxnStatus" />
+                                    </td>
+                                    <td></td>
+                                    <td><span data-toggle="modal" data-target="#DeleteBene"><a href="#" class="form-group" data-toggle="tooltip" title="Delete" data-placement="top"><span class="glyphicon glyphicon-trash"></span></a></span></td>
+                                </tr>
+                                <tr class="danger">
+                                    <td>3</td>
+                                    <td>Raj Gupta</td>
+                                    <td>Bank of India</td>
+                                    <td>1239876757</td>
+                                    <td>BKID0000001</td>
+                                    <td>Pending</td>
+                                    <td>
+                                        <input type="text" class="form-control" placeholder="Enter Amount" disabled />
+                                    </td>
+                                    <td>
+                                        <input type="button" class="btn btn-primary" value="NEFT" disabled />
+                                    </td>
+                                    <td>
+                                        <input type="button" class="btn btn-primary" value="IMPS" disabled />
+                                    </td>
+                                    <td class="disabled"><span data-toggle="modal" data-target="#ActivateBene"><a href="#" class="form-group" data-toggle="tooltip" title="Activate" data-placement="top"><span class="glyphicon glyphicon-ok"></span></a></span></td>
+                                    <td><span data-toggle="modal" data-target="#DeleteBene"><a href="#" class="form-group" data-toggle="tooltip" title="Delete" data-placement="top"><span class="glyphicon glyphicon-trash"></span></a></span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="form-group">
+                            <ul class="pagination pagination-lg">
+                                <li class="active"><a href="#">1</a></li>
+                                <li class="disabled"><a href="#">2</a></li>
+                                <li class="disabled"><a href="#">3</a></li>
+                                <li class="disabled"><a href="#">4</a></li>
+                                <li class="disabled"><a href="#">5</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="modal fade" id="DeleteBene" role="dialog">
+                            <div class="modal-dialog">
+
+
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">DELETE BENEFICIARY</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label for="usr">OTP:</label>
+                                            <input type="text" class="form-control" id="delotp" placeholder="OTP" data-toggle="tooltip" title="OTP" data-placement="top" maxlength="10" required="required" />
+                                        </div>
+                                        <div class="btn-group">
+                                            <input type="button" id="btnSubmitDelOTP" name="btnSubmit" value="Delete" class="btn btn-success" onclick="location.href = 'GetBeneIfCustomerAlreadyRegistered.html';"/>
+                                            &nbsp;&nbsp;&nbsp;
+                                            <input type="button" id="btnSubmitResendDelOTP" name="btnSubmit" value="Resend OTP" class="btn btn-danger" />
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="modal fade" id="ActivateBene" role="dialog">
+                            <div class="modal-dialog">
+
+
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">ACTIVATE BENEFICIARY</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label for="usr">OTP:</label>
+                                            <input type="text" class="form-control" id="Activateotp" placeholder="OTP" data-toggle="tooltip" title="OTP" data-placement="top" maxlength="10" required="required" data-bind="value: replyNumber" />
+                                        </div>
+                                        <div class="btn-group">
+                                            <input type="button" id="btnSubmitActivateOTP" name="btnSubmit" value="Activate" class="btn btn-success" onclick="location.href = 'GetBeneIfCustomerAlreadyRegistered.html';"/>
+
+                                            <input type="button" id="btnSubmitResendActivateOTP" name="btnSubmit" value="Resend OTP" class="btn btn-danger" />
+                                        </div>
+
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal fade" id="DMTTxnStatus" role="dialog">
+                    <div class="modal-dialog">
+
+
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title text-uppercase">UDIO DMT Transaction Status</h4>
+                            </div>
+                            <div class="modal-body info">
+                                <p class="">Transaction Status = <span class="info">InProcess / Processed / On Hold </span>/ <span class="danger">Incomplete</span> / <span class="success">Success</span> / <span class="danger">Failed</span> </p>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <center>
+                    <img src="image/Udio Logo_Powered by RBL Bank.png" class="img-responsive text-center" alt="UDIO Logo" width="104" height="60">
+                </center>
+            </div>
+        </div>
+        <div class="panel panel-footer">2017 <span class="glyphicon glyphicon-copyright-mark"></span> &nbsp;Copyright. Agent Pvt Ltd.</div>
+    </form>
+</body>
+</html>

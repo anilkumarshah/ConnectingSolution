@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "ImageFadeOut";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+<h2>ImageFadeOut</h2>
+
+<div id="dvLoading"></div>
+
+
+<style type="text/css">
+    
+#dvLoading
+
+{
+
+   background:#000 url(images/loader.gif) no-repeat center center;
+   height: 100px;
+   width: 100px;
+   position: fixed;
+   z-index: 1000;
+   left: 50%;
+   top: 50%;
+   margin: -25px 0 0 -25px;
+}
+
+
+</style>
+
+
+    <script>
+
+$(window).load(function(){
+
+  $('#dvLoading').fadeOut(2000);
+
+});
+
+</script>
+
+</script>

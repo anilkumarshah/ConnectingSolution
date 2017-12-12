@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EF_TranServModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Age" Type="int" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Files">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ContentType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Size" Type="bigint" Nullable="false" />
+          <Property Name="Data" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_FileUpload">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupID" Type="int" />
+          <Property Name="ContentType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Size" Type="bigint" Nullable="false" />
+          <Property Name="Data" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_RemittanceAgentDetails">
+          <Key>
+            <PropertyRef Name="AgentID" />
+          </Key>
+          <Property Name="AgentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DistributorMobileNo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="DistributorEmailID" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="AgentMobileNo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="AgentEmailID" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="AgentAPIUserName" Type="varchar" MaxLength="100" />
+          <Property Name="AgentAPIPassword" Type="varchar" MaxLength="256" />
+          <Property Name="AgentSystemIP" Type="varchar" MaxLength="255" />
+          <Property Name="DistributorCode" Type="varchar" MaxLength="100" />
+          <Property Name="AgentCode" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TranServ.dbo.tbl_StateMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_StateMaster">
+          <Key>
+            <PropertyRef Name="StateID" />
+          </Key>
+          <Property Name="StateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateName" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="255" />
+          <Property Name="ModifiedOn" Type="datetime" />
+        </EntityType>
+        <Function Name="GetAgentDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="EF_TranServModelStoreContainer">
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Files" EntityType="Self.Files" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_FileUpload" EntityType="Self.tbl_FileUpload" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_RemittanceAgentDetails" EntityType="Self.tbl_RemittanceAgentDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_StateMaster" EntityType="Self.tbl_StateMaster" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_StateMaster].[StateID] AS [StateID], 
+    [tbl_StateMaster].[StateName] AS [StateName], 
+    [tbl_StateMaster].[IsActive] AS [IsActive], 
+    [tbl_StateMaster].[IsDeleted] AS [IsDeleted], 
+    [tbl_StateMaster].[CreatedBy] AS [CreatedBy], 
+    [tbl_StateMaster].[CreatedOn] AS [CreatedOn], 
+    [tbl_StateMaster].[ModifiedBy] AS [ModifiedBy], 
+    [tbl_StateMaster].[ModifiedOn] AS [ModifiedOn]
+    FROM [dbo].[tbl_StateMaster] AS [tbl_StateMaster]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EF_TranServModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Age" Type="Int32" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="File">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContentType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Size" Type="Int64" Nullable="false" />
+          <Property Name="Data" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_FileUpload">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupID" Type="Int32" />
+          <Property Name="ContentType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Size" Type="Int64" Nullable="false" />
+          <Property Name="Data" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_RemittanceAgentDetails">
+          <Key>
+            <PropertyRef Name="AgentID" />
+          </Key>
+          <Property Name="AgentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DistributorMobileNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DistributorEmailID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AgentMobileNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AgentEmailID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AgentAPIUserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AgentAPIPassword" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="AgentSystemIP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DistributorCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AgentCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="EF_TranServEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Files" EntityType="Self.File" />
+          <EntitySet Name="tbl_FileUpload" EntityType="Self.tbl_FileUpload" />
+          <EntitySet Name="tbl_RemittanceAgentDetails" EntityType="Self.tbl_RemittanceAgentDetails" />
+          <FunctionImport Name="GetAgentDetails" ReturnType="Collection(EF_TranServModel.GetAgentDetails_Result)" />
+          <EntitySet Name="tbl_StateMaster" EntityType="EF_TranServModel.tbl_StateMaster" />
+        </EntityContainer>
+        <ComplexType Name="GetAgentDetails_Result">
+          <Property Type="Int32" Name="AgentID" Nullable="false" />
+          <Property Type="String" Name="DistributorMobileNo" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="DistributorEmailID" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="AgentMobileNo" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="AgentEmailID" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="AgentAPIUserName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="AgentAPIPassword" Nullable="true" MaxLength="256" />
+          <Property Type="String" Name="AgentSystemIP" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="DistributorCode" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="AgentCode" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <EntityType Name="tbl_StateMaster">
+          <Key>
+            <PropertyRef Name="StateID" />
+          </Key>
+          <Property Name="StateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateName" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EF_TranServModelStoreContainer" CdmEntityContainer="EF_TranServEntities">
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="EF_TranServModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Files">
+            <EntityTypeMapping TypeName="EF_TranServModel.File">
+              <MappingFragment StoreEntitySet="Files">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_FileUpload">
+            <EntityTypeMapping TypeName="EF_TranServModel.tbl_FileUpload">
+              <MappingFragment StoreEntitySet="tbl_FileUpload">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_RemittanceAgentDetails">
+            <EntityTypeMapping TypeName="EF_TranServModel.tbl_RemittanceAgentDetails">
+              <MappingFragment StoreEntitySet="tbl_RemittanceAgentDetails">
+                <ScalarProperty Name="AgentID" ColumnName="AgentID" />
+                <ScalarProperty Name="DistributorMobileNo" ColumnName="DistributorMobileNo" />
+                <ScalarProperty Name="DistributorEmailID" ColumnName="DistributorEmailID" />
+                <ScalarProperty Name="AgentMobileNo" ColumnName="AgentMobileNo" />
+                <ScalarProperty Name="AgentEmailID" ColumnName="AgentEmailID" />
+                <ScalarProperty Name="AgentAPIUserName" ColumnName="AgentAPIUserName" />
+                <ScalarProperty Name="AgentAPIPassword" ColumnName="AgentAPIPassword" />
+                <ScalarProperty Name="AgentSystemIP" ColumnName="AgentSystemIP" />
+                <ScalarProperty Name="DistributorCode" ColumnName="DistributorCode" />
+                <ScalarProperty Name="AgentCode" ColumnName="AgentCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetAgentDetails" FunctionName="EF_TranServModel.Store.GetAgentDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EF_TranServModel.GetAgentDetails_Result">
+                <ScalarProperty Name="AgentID" ColumnName="AgentID" />
+                <ScalarProperty Name="DistributorMobileNo" ColumnName="DistributorMobileNo" />
+                <ScalarProperty Name="DistributorEmailID" ColumnName="DistributorEmailID" />
+                <ScalarProperty Name="AgentMobileNo" ColumnName="AgentMobileNo" />
+                <ScalarProperty Name="AgentEmailID" ColumnName="AgentEmailID" />
+                <ScalarProperty Name="AgentAPIUserName" ColumnName="AgentAPIUserName" />
+                <ScalarProperty Name="AgentAPIPassword" ColumnName="AgentAPIPassword" />
+                <ScalarProperty Name="AgentSystemIP" ColumnName="AgentSystemIP" />
+                <ScalarProperty Name="DistributorCode" ColumnName="DistributorCode" />
+                <ScalarProperty Name="AgentCode" ColumnName="AgentCode" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="tbl_StateMaster">
+            <EntityTypeMapping TypeName="EF_TranServModel.tbl_StateMaster">
+              <MappingFragment StoreEntitySet="tbl_StateMaster">
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "ContactUsQueryDetail";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+    var objCOntactUsDetail = ViewBag.ContactUsIDDetails as IEnumerable<TSVSite_Admin.ef.vw_ContactUs>;
+}
+
+
+
+
+<h2>Contact Us Query Detail</h2>
+<hr />
+
+
+
+
+@using (Html.BeginForm("ContactUsQueryDetail", "Business", FormMethod.Post))
+            {
+    <div class="row">
+
+        @Html.Label("ContactUSID", "Contact Us ID")
+
+        @Html.TextBox("txtContactUsID", @objCOntactUsDetail.FirstOrDefault().Id, new { @class = "form-control", @readonly = "readonly" })
+
+    </div>
+
+    <div class="row">
+        <div class="form-group">
+            @Html.Label("Name", "Name") &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="form-control"> @objCOntactUsDetail.FirstOrDefault().Name</div>
+        </div>
+    </div>
+        <div class="row">
+            <div class="form-group">
+                @Html.Label("MobileNo", "Mobile No") &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="form-control">
+                    @objCOntactUsDetail.FirstOrDefault().MobileNo</div>
+                </div>
+        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                @Html.Label("Email", "Email") <div class="form-control">
+    @objCOntactUsDetail.FirstOrDefault().Email</div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                @Html.Label("BusinessWebsite", "Business Website") <div class="form-control">
+    @objCOntactUsDetail.FirstOrDefault().BusinessWebsite</div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                @Html.Label("Subject", "Subject") 
+                                @Html.TextArea("txtSubject", @objCOntactUsDetail.FirstOrDefault().Subject.ToString().Trim(), new { @class = "form-control", rows = "3" })
+    
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                @Html.Label("BusinessMessage", "Business Message") 
+    @Html.TextArea("txtBusinessMessage",@objCOntactUsDetail.FirstOrDefault().BusinessMessage.ToString().Trim(), new { @class = "form-control", rows = "4" })
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                @Html.Label("Reply", "Reply") 
+                                @Html.TextArea("txtReply", null, new { @class = "form-control", rows = "6" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <input type="submit" id="btnSubmitExist" name="btnSubmit" value="Send Reply" class="btn btn-success" /></div></div>
+                                }
+
+
+
+

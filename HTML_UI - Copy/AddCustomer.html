@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+
+
+    </script>
+    <script type="text/javascript">
+
+        $('.form_date').datetimepicker({
+            language: 'en',
+            weekStart: 1,
+            todayBtn: 1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0
+        });
+
+    </script>
+</head>
+<body>
+    <form id="form1" role="form">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="" data-target="#myNavbar">
+                        <span class="icon-bar">a</span>
+                        <span class="icon-bar">s</span>
+                        <span class="icon-bar">d</span>
+                    </button>
+                    <a class="navbar-brand" href="home.html">DMT Express </a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="home.html">Home</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">UDIO DMT <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="QueryCustomer.html">Query Customer</a></li>
+                                <li><a href="UDIODMTTxnHistory.html">DMT Transaction</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">UDIO Wallet <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="CardQueryCustomer.html">Query Customer</a></li>
+                                <li><a href="UDIOCardTxnHistory.html">Card Transaction</a></li>
+
+                            </ul>
+                        </li>
+
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span>Welcome  <span class="badge">Agent</span></a> </li>
+                        <li><a href="Login.html"><span class="glyphicon glyphicon-log-out"></span>Log out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container form-group">
+            <div class="panel panel-default">
+                <div class="panel-heading"><b>ADD CUSTOMER</b></div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="usr">Title</label>
+                        <select class="form-control" id="sel1">
+                            <option>MR</option>
+                            <option>MRS</option>
+                            <option>MS</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Customer Mobile No:</label>
+                        <input type="text" class="form-control" id="Mobile" placeholder="Mobile No" data-toggle="tooltip" title="Enter Mobile No" data-placement="top" maxlength="10" required="required" />
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">First Name:</label>
+                        <input type="text" class="form-control" id="fname" placeholder="First Name" data-toggle="tooltip" title="First Name" data-placement="top" maxlength="25" required="required" />
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Middle Name:</label>
+                        <input type="text" class="form-control" id="mname" placeholder="Middle Name" data-toggle="tooltip" title="Middle Name" data-placement="top" maxlength="25" required="required" />
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Last Name:</label>
+                        <input type="text" class="form-control" id="lname" placeholder="Last Name" data-toggle="tooltip" title="Last Name" data-placement="top" maxlength="25" required="required" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usr">Gender:</label>
+                        <div class="input-group">
+                            <label class="radio-inline">
+                                <input type="radio" name="optradio" />Male
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="optradio" />Female
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dtp_input2">Date Picking</label>
+                        <div class="form-group">
+                            <div class="input-group date form_date col-md-5" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                <input class="form-control" size="16" type="text" value="" readonly />
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+                            <input type="hidden" id="dtp_input2" value="" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Email:</label>
+                        <input type="text" class="form-control" id="email" placeholder="Email" data-toggle="tooltip" title="Email" data-placement="top" maxlength="25" required="required" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usr">Mother Maiden Name:</label>
+                        <input type="text" class="form-control" id="MotherMaidenName" placeholder="Mother Maiden Name" data-toggle="tooltip" title="Mother Maiden Name" data-placement="top" maxlength="25" required="required" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usr">Landline:</label>
+                        <input type="text" class="form-control" id="Landline" placeholder="Landline" data-toggle="tooltip" title="Landline" data-placement="top" maxlength="25" required="required" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usr">Address Line 1:</label>
+                        <input type="text" class="form-control" id="AddressLine1" placeholder="Address Line 1" data-toggle="tooltip" title="Address Line 1" data-placement="top" maxlength="25" required="required" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usr">Address Line 2:</label>
+                        <input type="text" class="form-control" id="AddressLine2" placeholder="Address Line 2" data-toggle="tooltip" title="Address Line 2" data-placement="top" maxlength="25" required="required" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usr">City:</label>
+                        <input type="text" class="form-control" id="City" placeholder="City" data-toggle="tooltip" title="City" data-placement="top" maxlength="25" required="required" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usr">State:</label>
+                        <select class="form-control" id="state">
+                            <option>Andhra Pradesh</option>
+                            <option>Arunachal Pradesh</option>
+                            <option>Assam</option>
+                            <option>Bihar</option>
+                            <option>Chhattisgarh</option>
+                            <option>Goa</option>
+                            <option>Gujarat</option>
+                            <option>Haryana</option>
+                            <option>Karnataka</option>
+                            <option>Kerala</option>
+                            <option>Madhya Pradesh</option>
+                            <option>Maharashtra</option>
+                            <option>Rajasthan</option>
+                            <option>Tamil Nadu</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usr">Country:</label>
+                        <input type="text" class="form-control" id="Country" placeholder="Country" data-toggle="tooltip" title="Country" data-placement="top" maxlength="25" required="required" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usr">Pincode:</label>
+                        <input type="text" class="form-control" id="Pincode" placeholder="Pincode" data-toggle="tooltip" title="Pincode" data-placement="top" maxlength="25" required="required" />
+                    </div>
+
+                    <div class="btn-group">
+                        <input type="button" id="btnSubmitExist1" name="btnSubmit" value="Add Customer" class="btn btn-success" onclick="location.href = 'GetBeneIfCustomerNotRegistered.html';"/>
+                        &nbsp;&nbsp;&nbsp;
+                        <input type="button" id="btnSubmit1" name="btnSubmit" value="Reset" class="btn btn-info" />
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="form-group">
+                <center>
+                    <img src="image/Udio Logo_Powered by RBL Bank.png" class="img-responsive text-center" alt="UDIO Logo" width="104" height="60">
+                </center>
+            </div>
+        </div>
+        <div class="panel panel-footer">2017 <span class="glyphicon glyphicon-copyright-mark"></span> &nbsp;Copyright. Agent Pvt Ltd.</div>
+    </form>
+</body>
+</html>

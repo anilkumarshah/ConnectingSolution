@@ -1,0 +1,146 @@
+﻿@model APIUtility.Models.RemittanceDataModal
+
+@{
+    ViewBag.Title = "AgentCreation";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+    string CLientIP = ViewBag.RemoteIP;
+
+}
+
+@using (Html.BeginForm("AgentCreation", "Remittance", FormMethod.Post, new { autocomplete="off" }))
+{
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    <div id="ValidationSummary" style="display:none" class="validation-summary-errors">
+    </div>
+    <div class="alert alert-info">
+        <strong>IP : </strong> @CLientIP.ToString()
+    </div>
+<div class="form-group">
+    @Html.LabelFor(m => m.DistributorMobileNo)
+    <div class='input-group'>
+        <span class="input-group-addon">
+            <span class="glyphicon glyphicon-hand-right"></span>
+        </span>
+        @Html.TextBoxFor(m => m.DistributorMobileNo, null, new { @class = "form-control" })
+      
+        @*@Html.Raw(HttpUtility.HtmlDecode(Html.ValidationMessageFor(m => m.DistributorMobileNo).ToHtmlString()))*@
+        </div>
+    @Html.ValidationMessageFor(model => model.DistributorMobileNo, null, new { @class = "help-inline" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.DistributorEmailID)
+        <div class='input-group'>
+            <span class="input-group-addon">
+               
+                <span class="glyphicon glyphicon-hand-right"></span>
+            </span>
+            @Html.TextBoxFor(m => m.DistributorEmailID, null, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.AgentMobileNo)
+        <div class='input-group'>
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-hand-right"></span>
+            </span>
+            @Html.TextBoxFor(m => m.AgentMobileNo, null, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.AgentEmailID)
+        <div class='input-group'>
+            <span class="input-group-addon">
+
+                <span class="glyphicon glyphicon-hand-right"></span>
+            </span>
+            @Html.TextBoxFor(m => m.AgentEmailID, null, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.AgentAPIUserName)
+        <div class='input-group'>
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-hand-right"></span>
+            </span>
+            @Html.TextBoxFor(m => m.AgentAPIUserName, null, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.AgentAPIPassword)
+        <div class='input-group'>
+            <span class="input-group-addon">
+
+                <span class="glyphicon glyphicon-hand-right"></span>
+            </span>
+            @Html.PasswordFor(m => m.AgentAPIPassword, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ddlStateID)
+        <div class='input-group'>
+            <span class="input-group-addon">
+
+                <span class="glyphicon glyphicon-hand-right"></span>
+            </span>
+            @*@Html.DropDownListFor(m => m.ddlStateID, @ViewBag.ListItem as SelectList, new {@class = "form-control"})*@
+        </div>
+    </div>
+    @*<div class="form-group">
+        @Html.LabelFor(m => m.AgentAPIConfirmPassword)
+        <div class='input-group'>
+            <span class="input-group-addon">
+
+                <span class="glyphicon glyphicon-hand-right"></span>
+            </span>
+            @Html.PasswordFor(m => m.AgentAPIConfirmPassword, new { @class = "form-control" })
+        </div>
+    </div>*@
+
+    <input type="submit" id="Save" value="Save" name="Save" class="btn btn-success"/>
+
+    @*<div class="form-group">
+        @Html.LabelFor(m => m.AgentSystemIP)
+        <div class='input-group'>
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-hand-right"></span>
+            </span>
+            @Html.TextBoxFor(m => m.AgentSystemIP, null, new { @class = "form-control" })
+        </div>
+    </div>*@
+
+@*<div class="row">
+    <div class='col-sm-6'>
+        <div class="form-group">
+            <div class='input-group date' id='datetimepicker1'>
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                <input type='text' class="form-control" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+   
+</div>*@
+}
+<script type="text/javascript">
+
+    function showValidationSummaryDialog() {
+        $('#ValidationSummary').html($('.validation-summary-errors').html());
+
+        $('#ValidationSummary').dialog({
+            title: 'Error',
+            modal: true
+        });
+    }
+
+    $(document).ready(function () {
+        $('form').bind('invalid-form.validate', function (error, element) {
+            showValidationSummaryDialog();
+        });
+    });
+
+</script>

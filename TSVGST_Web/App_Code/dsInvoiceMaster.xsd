@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsInvoiceMaster" targetNamespace="http://tempuri.org/dsInvoiceMaster.xsd" xmlns:mstns="http://tempuri.org/dsInvoiceMaster.xsd" xmlns="http://tempuri.org/dsInvoiceMaster.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="SKSConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SKSConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.SKSConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vw_BillInvoiceMasterTableAdapter" GeneratorDataComponentClassName="vw_BillInvoiceMasterTableAdapter" Name="vw_BillInvoiceMaster" UserDataComponentName="vw_BillInvoiceMasterTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SKSConnectionString (Web.config)" DbObjectName="SKS.dbo.vw_BillInvoiceMaster" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT InvoiceID, FinancialYear, InvoiceDate, FK_BillingCustomerID, FK_ShippingCustomerID, InvoiceTotalAmount, TotalDiscountonInvoice, TotalCollectedAmount, FreightCharges, LoadingnPackingCharges, InsuranceCharges, OtherCharges, TransportationMode, VehivleNumber, DateNSupplyofTime, PlaceofSupply, RetailerShopName, CustomerName, BillingAddress1, BillingAddress2, BillingCity, BillingStateID, BillingStateName, BillingStateCode, Billingpin, BillingEmail, BillingPhone, BillingPANNo, BillingAadharNo, BillingGSTINNo, ShippingRetailerShopName, ShippingCustomerName, ShippingAddress1, ShippingAddress2, ShippingCity, ShippingStateID, ShippingStateName, ShippingStateCode, Shippingpin, ShippingEmail, ShippingPhone, ShippingPANNo, ShippingAadharNo, ShippingGSTINNo FROM vw_BillInvoiceMaster</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="InvoiceID" DataSetColumn="InvoiceID" />
+              <Mapping SourceColumn="FinancialYear" DataSetColumn="FinancialYear" />
+              <Mapping SourceColumn="InvoiceDate" DataSetColumn="InvoiceDate" />
+              <Mapping SourceColumn="FK_BillingCustomerID" DataSetColumn="FK_BillingCustomerID" />
+              <Mapping SourceColumn="FK_ShippingCustomerID" DataSetColumn="FK_ShippingCustomerID" />
+              <Mapping SourceColumn="InvoiceTotalAmount" DataSetColumn="InvoiceTotalAmount" />
+              <Mapping SourceColumn="TotalDiscountonInvoice" DataSetColumn="TotalDiscountonInvoice" />
+              <Mapping SourceColumn="TotalCollectedAmount" DataSetColumn="TotalCollectedAmount" />
+              <Mapping SourceColumn="FreightCharges" DataSetColumn="FreightCharges" />
+              <Mapping SourceColumn="LoadingnPackingCharges" DataSetColumn="LoadingnPackingCharges" />
+              <Mapping SourceColumn="InsuranceCharges" DataSetColumn="InsuranceCharges" />
+              <Mapping SourceColumn="OtherCharges" DataSetColumn="OtherCharges" />
+              <Mapping SourceColumn="TransportationMode" DataSetColumn="TransportationMode" />
+              <Mapping SourceColumn="VehivleNumber" DataSetColumn="VehivleNumber" />
+              <Mapping SourceColumn="DateNSupplyofTime" DataSetColumn="DateNSupplyofTime" />
+              <Mapping SourceColumn="PlaceofSupply" DataSetColumn="PlaceofSupply" />
+              <Mapping SourceColumn="RetailerShopName" DataSetColumn="RetailerShopName" />
+              <Mapping SourceColumn="CustomerName" DataSetColumn="CustomerName" />
+              <Mapping SourceColumn="BillingAddress1" DataSetColumn="BillingAddress1" />
+              <Mapping SourceColumn="BillingAddress2" DataSetColumn="BillingAddress2" />
+              <Mapping SourceColumn="BillingCity" DataSetColumn="BillingCity" />
+              <Mapping SourceColumn="BillingStateID" DataSetColumn="BillingStateID" />
+              <Mapping SourceColumn="BillingStateName" DataSetColumn="BillingStateName" />
+              <Mapping SourceColumn="Billingpin" DataSetColumn="Billingpin" />
+              <Mapping SourceColumn="BillingEmail" DataSetColumn="BillingEmail" />
+              <Mapping SourceColumn="BillingPhone" DataSetColumn="BillingPhone" />
+              <Mapping SourceColumn="BillingPANNo" DataSetColumn="BillingPANNo" />
+              <Mapping SourceColumn="BillingAadharNo" DataSetColumn="BillingAadharNo" />
+              <Mapping SourceColumn="BillingGSTINNo" DataSetColumn="BillingGSTINNo" />
+              <Mapping SourceColumn="ShippingRetailerShopName" DataSetColumn="ShippingRetailerShopName" />
+              <Mapping SourceColumn="ShippingCustomerName" DataSetColumn="ShippingCustomerName" />
+              <Mapping SourceColumn="ShippingAddress1" DataSetColumn="ShippingAddress1" />
+              <Mapping SourceColumn="ShippingAddress2" DataSetColumn="ShippingAddress2" />
+              <Mapping SourceColumn="ShippingCity" DataSetColumn="ShippingCity" />
+              <Mapping SourceColumn="ShippingStateID" DataSetColumn="ShippingStateID" />
+              <Mapping SourceColumn="ShippingStateName" DataSetColumn="ShippingStateName" />
+              <Mapping SourceColumn="Shippingpin" DataSetColumn="Shippingpin" />
+              <Mapping SourceColumn="ShippingEmail" DataSetColumn="ShippingEmail" />
+              <Mapping SourceColumn="ShippingPhone" DataSetColumn="ShippingPhone" />
+              <Mapping SourceColumn="ShippingPANNo" DataSetColumn="ShippingPANNo" />
+              <Mapping SourceColumn="ShippingAadharNo" DataSetColumn="ShippingAadharNo" />
+              <Mapping SourceColumn="ShippingGSTINNo" DataSetColumn="ShippingGSTINNo" />
+              <Mapping SourceColumn="BillingStateCode" DataSetColumn="BillingStateCode" />
+              <Mapping SourceColumn="ShippingStateCode" DataSetColumn="ShippingStateCode" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsInvoiceMaster" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="dsInvoiceMaster" msprop:Generator_UserDSName="dsInvoiceMaster">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="vw_BillInvoiceMaster" msprop:Generator_TableClassName="vw_BillInvoiceMasterDataTable" msprop:Generator_TableVarName="tablevw_BillInvoiceMaster" msprop:Generator_TablePropName="vw_BillInvoiceMaster" msprop:Generator_RowDeletingName="vw_BillInvoiceMasterRowDeleting" msprop:Generator_RowChangingName="vw_BillInvoiceMasterRowChanging" msprop:Generator_RowEvHandlerName="vw_BillInvoiceMasterRowChangeEventHandler" msprop:Generator_RowDeletedName="vw_BillInvoiceMasterRowDeleted" msprop:Generator_UserTableName="vw_BillInvoiceMaster" msprop:Generator_RowChangedName="vw_BillInvoiceMasterRowChanged" msprop:Generator_RowEvArgName="vw_BillInvoiceMasterRowChangeEvent" msprop:Generator_RowClassName="vw_BillInvoiceMasterRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="InvoiceID" msprop:Generator_ColumnVarNameInTable="columnInvoiceID" msprop:Generator_ColumnPropNameInRow="InvoiceID" msprop:Generator_ColumnPropNameInTable="InvoiceIDColumn" msprop:Generator_UserColumnName="InvoiceID" type="xs:long" />
+              <xs:element name="FinancialYear" msprop:Generator_ColumnVarNameInTable="columnFinancialYear" msprop:Generator_ColumnPropNameInRow="FinancialYear" msprop:Generator_ColumnPropNameInTable="FinancialYearColumn" msprop:Generator_UserColumnName="FinancialYear">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="InvoiceDate" msprop:Generator_ColumnVarNameInTable="columnInvoiceDate" msprop:Generator_ColumnPropNameInRow="InvoiceDate" msprop:Generator_ColumnPropNameInTable="InvoiceDateColumn" msprop:Generator_UserColumnName="InvoiceDate" type="xs:dateTime" />
+              <xs:element name="FK_BillingCustomerID" msprop:Generator_ColumnVarNameInTable="columnFK_BillingCustomerID" msprop:Generator_ColumnPropNameInRow="FK_BillingCustomerID" msprop:Generator_ColumnPropNameInTable="FK_BillingCustomerIDColumn" msprop:Generator_UserColumnName="FK_BillingCustomerID" type="xs:int" />
+              <xs:element name="FK_ShippingCustomerID" msprop:Generator_ColumnVarNameInTable="columnFK_ShippingCustomerID" msprop:Generator_ColumnPropNameInRow="FK_ShippingCustomerID" msprop:Generator_ColumnPropNameInTable="FK_ShippingCustomerIDColumn" msprop:Generator_UserColumnName="FK_ShippingCustomerID" type="xs:int" />
+              <xs:element name="InvoiceTotalAmount" msprop:Generator_ColumnVarNameInTable="columnInvoiceTotalAmount" msprop:Generator_ColumnPropNameInRow="InvoiceTotalAmount" msprop:Generator_ColumnPropNameInTable="InvoiceTotalAmountColumn" msprop:Generator_UserColumnName="InvoiceTotalAmount" type="xs:decimal" />
+              <xs:element name="TotalDiscountonInvoice" msprop:Generator_ColumnVarNameInTable="columnTotalDiscountonInvoice" msprop:Generator_ColumnPropNameInRow="TotalDiscountonInvoice" msprop:Generator_ColumnPropNameInTable="TotalDiscountonInvoiceColumn" msprop:Generator_UserColumnName="TotalDiscountonInvoice" type="xs:decimal" />
+              <xs:element name="TotalCollectedAmount" msprop:Generator_ColumnVarNameInTable="columnTotalCollectedAmount" msprop:Generator_ColumnPropNameInRow="TotalCollectedAmount" msprop:Generator_ColumnPropNameInTable="TotalCollectedAmountColumn" msprop:Generator_UserColumnName="TotalCollectedAmount" type="xs:decimal" />
+              <xs:element name="FreightCharges" msprop:Generator_ColumnVarNameInTable="columnFreightCharges" msprop:Generator_ColumnPropNameInRow="FreightCharges" msprop:Generator_ColumnPropNameInTable="FreightChargesColumn" msprop:Generator_UserColumnName="FreightCharges" type="xs:decimal" minOccurs="0" />
+              <xs:element name="LoadingnPackingCharges" msprop:Generator_ColumnVarNameInTable="columnLoadingnPackingCharges" msprop:Generator_ColumnPropNameInRow="LoadingnPackingCharges" msprop:Generator_ColumnPropNameInTable="LoadingnPackingChargesColumn" msprop:Generator_UserColumnName="LoadingnPackingCharges" type="xs:decimal" minOccurs="0" />
+              <xs:element name="InsuranceCharges" msprop:Generator_ColumnVarNameInTable="columnInsuranceCharges" msprop:Generator_ColumnPropNameInRow="InsuranceCharges" msprop:Generator_ColumnPropNameInTable="InsuranceChargesColumn" msprop:Generator_UserColumnName="InsuranceCharges" type="xs:decimal" minOccurs="0" />
+              <xs:element name="OtherCharges" msprop:Generator_ColumnVarNameInTable="columnOtherCharges" msprop:Generator_ColumnPropNameInRow="OtherCharges" msprop:Generator_ColumnPropNameInTable="OtherChargesColumn" msprop:Generator_UserColumnName="OtherCharges" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TransportationMode" msprop:Generator_ColumnVarNameInTable="columnTransportationMode" msprop:Generator_ColumnPropNameInRow="TransportationMode" msprop:Generator_ColumnPropNameInTable="TransportationModeColumn" msprop:Generator_UserColumnName="TransportationMode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="VehivleNumber" msprop:Generator_ColumnVarNameInTable="columnVehivleNumber" msprop:Generator_ColumnPropNameInRow="VehivleNumber" msprop:Generator_ColumnPropNameInTable="VehivleNumberColumn" msprop:Generator_UserColumnName="VehivleNumber" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DateNSupplyofTime" msprop:Generator_ColumnVarNameInTable="columnDateNSupplyofTime" msprop:Generator_ColumnPropNameInRow="DateNSupplyofTime" msprop:Generator_ColumnPropNameInTable="DateNSupplyofTimeColumn" msprop:Generator_UserColumnName="DateNSupplyofTime" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="PlaceofSupply" msprop:Generator_ColumnVarNameInTable="columnPlaceofSupply" msprop:Generator_ColumnPropNameInRow="PlaceofSupply" msprop:Generator_ColumnPropNameInTable="PlaceofSupplyColumn" msprop:Generator_UserColumnName="PlaceofSupply" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RetailerShopName" msprop:Generator_ColumnVarNameInTable="columnRetailerShopName" msprop:Generator_ColumnPropNameInRow="RetailerShopName" msprop:Generator_ColumnPropNameInTable="RetailerShopNameColumn" msprop:Generator_UserColumnName="RetailerShopName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CustomerName" msprop:Generator_ColumnVarNameInTable="columnCustomerName" msprop:Generator_ColumnPropNameInRow="CustomerName" msprop:Generator_ColumnPropNameInTable="CustomerNameColumn" msprop:Generator_UserColumnName="CustomerName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BillingAddress1" msprop:Generator_ColumnVarNameInTable="columnBillingAddress1" msprop:Generator_ColumnPropNameInRow="BillingAddress1" msprop:Generator_ColumnPropNameInTable="BillingAddress1Column" msprop:Generator_UserColumnName="BillingAddress1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BillingAddress2" msprop:Generator_ColumnVarNameInTable="columnBillingAddress2" msprop:Generator_ColumnPropNameInRow="BillingAddress2" msprop:Generator_ColumnPropNameInTable="BillingAddress2Column" msprop:Generator_UserColumnName="BillingAddress2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BillingCity" msprop:Generator_ColumnVarNameInTable="columnBillingCity" msprop:Generator_ColumnPropNameInRow="BillingCity" msprop:Generator_ColumnPropNameInTable="BillingCityColumn" msprop:Generator_UserColumnName="BillingCity" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BillingStateID" msprop:Generator_ColumnVarNameInTable="columnBillingStateID" msprop:Generator_ColumnPropNameInRow="BillingStateID" msprop:Generator_ColumnPropNameInTable="BillingStateIDColumn" msprop:Generator_UserColumnName="BillingStateID" type="xs:int" minOccurs="0" />
+              <xs:element name="BillingStateName" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnBillingStateName" msprop:Generator_ColumnPropNameInRow="BillingStateName" msprop:Generator_ColumnPropNameInTable="BillingStateNameColumn" msprop:Generator_UserColumnName="BillingStateName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Billingpin" msprop:Generator_ColumnVarNameInTable="columnBillingpin" msprop:Generator_ColumnPropNameInRow="Billingpin" msprop:Generator_ColumnPropNameInTable="BillingpinColumn" msprop:Generator_UserColumnName="Billingpin" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BillingEmail" msprop:Generator_ColumnVarNameInTable="columnBillingEmail" msprop:Generator_ColumnPropNameInRow="BillingEmail" msprop:Generator_ColumnPropNameInTable="BillingEmailColumn" msprop:Generator_UserColumnName="BillingEmail" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BillingPhone" msprop:Generator_ColumnVarNameInTable="columnBillingPhone" msprop:Generator_ColumnPropNameInRow="BillingPhone" msprop:Generator_ColumnPropNameInTable="BillingPhoneColumn" msprop:Generator_UserColumnName="BillingPhone" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BillingPANNo" msprop:Generator_ColumnVarNameInTable="columnBillingPANNo" msprop:Generator_ColumnPropNameInRow="BillingPANNo" msprop:Generator_ColumnPropNameInTable="BillingPANNoColumn" msprop:Generator_UserColumnName="BillingPANNo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BillingAadharNo" msprop:Generator_ColumnVarNameInTable="columnBillingAadharNo" msprop:Generator_ColumnPropNameInRow="BillingAadharNo" msprop:Generator_ColumnPropNameInTable="BillingAadharNoColumn" msprop:Generator_UserColumnName="BillingAadharNo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BillingGSTINNo" msprop:Generator_ColumnVarNameInTable="columnBillingGSTINNo" msprop:Generator_ColumnPropNameInRow="BillingGSTINNo" msprop:Generator_ColumnPropNameInTable="BillingGSTINNoColumn" msprop:Generator_UserColumnName="BillingGSTINNo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ShippingRetailerShopName" msprop:Generator_ColumnVarNameInTable="columnShippingRetailerShopName" msprop:Generator_ColumnPropNameInRow="ShippingRetailerShopName" msprop:Generator_ColumnPropNameInTable="ShippingRetailerShopNameColumn" msprop:Generator_UserColumnName="ShippingRetailerShopName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ShippingCustomerName" msprop:Generator_ColumnVarNameInTable="columnShippingCustomerName" msprop:Generator_ColumnPropNameInRow="ShippingCustomerName" msprop:Generator_ColumnPropNameInTable="ShippingCustomerNameColumn" msprop:Generator_UserColumnName="ShippingCustomerName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ShippingAddress1" msprop:Generator_ColumnVarNameInTable="columnShippingAddress1" msprop:Generator_ColumnPropNameInRow="ShippingAddress1" msprop:Generator_ColumnPropNameInTable="ShippingAddress1Column" msprop:Generator_UserColumnName="ShippingAddress1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ShippingAddress2" msprop:Generator_ColumnVarNameInTable="columnShippingAddress2" msprop:Generator_ColumnPropNameInRow="ShippingAddress2" msprop:Generator_ColumnPropNameInTable="ShippingAddress2Column" msprop:Generator_UserColumnName="ShippingAddress2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ShippingCity" msprop:Generator_ColumnVarNameInTable="columnShippingCity" msprop:Generator_ColumnPropNameInRow="ShippingCity" msprop:Generator_ColumnPropNameInTable="ShippingCityColumn" msprop:Generator_UserColumnName="ShippingCity" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ShippingStateID" msprop:Generator_ColumnVarNameInTable="columnShippingStateID" msprop:Generator_ColumnPropNameInRow="ShippingStateID" msprop:Generator_ColumnPropNameInTable="ShippingStateIDColumn" msprop:Generator_UserColumnName="ShippingStateID" type="xs:int" minOccurs="0" />
+              <xs:element name="ShippingStateName" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnShippingStateName" msprop:Generator_ColumnPropNameInRow="ShippingStateName" msprop:Generator_ColumnPropNameInTable="ShippingStateNameColumn" msprop:Generator_UserColumnName="ShippingStateName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Shippingpin" msprop:Generator_ColumnVarNameInTable="columnShippingpin" msprop:Generator_ColumnPropNameInRow="Shippingpin" msprop:Generator_ColumnPropNameInTable="ShippingpinColumn" msprop:Generator_UserColumnName="Shippingpin" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ShippingEmail" msprop:Generator_ColumnVarNameInTable="columnShippingEmail" msprop:Generator_ColumnPropNameInRow="ShippingEmail" msprop:Generator_ColumnPropNameInTable="ShippingEmailColumn" msprop:Generator_UserColumnName="ShippingEmail" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ShippingPhone" msprop:Generator_ColumnVarNameInTable="columnShippingPhone" msprop:Generator_ColumnPropNameInRow="ShippingPhone" msprop:Generator_ColumnPropNameInTable="ShippingPhoneColumn" msprop:Generator_UserColumnName="ShippingPhone" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ShippingPANNo" msprop:Generator_ColumnVarNameInTable="columnShippingPANNo" msprop:Generator_ColumnPropNameInRow="ShippingPANNo" msprop:Generator_ColumnPropNameInTable="ShippingPANNoColumn" msprop:Generator_UserColumnName="ShippingPANNo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ShippingAadharNo" msprop:Generator_ColumnVarNameInTable="columnShippingAadharNo" msprop:Generator_ColumnPropNameInRow="ShippingAadharNo" msprop:Generator_ColumnPropNameInTable="ShippingAadharNoColumn" msprop:Generator_UserColumnName="ShippingAadharNo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ShippingGSTINNo" msprop:Generator_ColumnVarNameInTable="columnShippingGSTINNo" msprop:Generator_ColumnPropNameInRow="ShippingGSTINNo" msprop:Generator_ColumnPropNameInTable="ShippingGSTINNoColumn" msprop:Generator_UserColumnName="ShippingGSTINNo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BillingStateCode" msprop:Generator_ColumnVarNameInTable="columnBillingStateCode" msprop:Generator_ColumnPropNameInRow="BillingStateCode" msprop:Generator_ColumnPropNameInTable="BillingStateCodeColumn" msprop:Generator_UserColumnName="BillingStateCode" type="xs:string" minOccurs="0" />
+              <xs:element name="ShippingStateCode" msprop:Generator_ColumnVarNameInTable="columnShippingStateCode" msprop:Generator_ColumnPropNameInRow="ShippingStateCode" msprop:Generator_ColumnPropNameInTable="ShippingStateCodeColumn" msprop:Generator_UserColumnName="ShippingStateCode" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalProductQuantity" msprop:Generator_ColumnVarNameInTable="columnTotalProductQuantity" msprop:Generator_ColumnPropNameInRow="TotalProductQuantity" msprop:Generator_ColumnPropNameInTable="TotalProductQuantityColumn" msprop:Generator_UserColumnName="TotalProductQuantity" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalTaxableAmount" msprop:Generator_ColumnVarNameInTable="columnTotalTaxableAmount" msprop:Generator_ColumnPropNameInRow="TotalTaxableAmount" msprop:Generator_ColumnPropNameInTable="TotalTaxableAmountColumn" msprop:Generator_UserColumnName="TotalTaxableAmount" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalSGSTAmount" msprop:Generator_ColumnVarNameInTable="columnTotalSGSTAmount" msprop:Generator_ColumnPropNameInRow="TotalSGSTAmount" msprop:Generator_ColumnPropNameInTable="TotalSGSTAmountColumn" msprop:Generator_UserColumnName="TotalSGSTAmount" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalCGSTAmount" msprop:Generator_ColumnVarNameInTable="columnTotalCGSTAmount" msprop:Generator_ColumnPropNameInRow="TotalCGSTAmount" msprop:Generator_ColumnPropNameInTable="TotalCGSTAmountColumn" msprop:Generator_UserColumnName="TotalCGSTAmount" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:vw_BillInvoiceMaster" />
+      <xs:field xpath="mstns:InvoiceID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

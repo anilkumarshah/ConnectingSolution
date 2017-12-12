@@ -1,0 +1,116 @@
+﻿@*@model TSVSite_Admin.Models.BusinessContactUsReplyModel*@
+
+@{
+    ViewBag.Title = "Contact Us Query";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+<style type="text/css">
+    .webgrid-table {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        width: 100%;
+        display: table;
+        border-collapse: separate;
+        border: thick 1px #FF0000;
+        background-color: white;
+    }
+
+        .webgrid-table td, th {
+            border: 1px solid #EAF2D3;
+            padding: 3px 7px 2px;
+        }
+
+    .webgrid-header {
+        background-color: red;
+        color: black;
+        padding-bottom: 4px;
+        padding-top: 5px;
+        text-align: left;
+    }
+
+    .webgrid-footer {
+    }
+
+    .webgrid-row-style {
+        padding: 3px 7px 2px;
+    }
+
+    .webgrid-alternating-row {
+        background-color: #EAF2D3;
+        padding: 3px 7px 2px;
+    }
+</style>
+
+
+
+@using (@Html.BeginForm("ContactUsQueryDetail", "Business"))
+{
+    @*@{
+           var objContactUsList=List<TSVSite_Admin.Models.ContactUSList>()
+        }*@
+    <h2>Contact Us Query</h2>
+    <hr />
+    //var grid = new WebGrid(Model.objContactUsList, canSort: false);
+    var grid = new WebGrid(ViewBag.ContactUsList, canSort: true, rowsPerPage: 10);
+
+    @*<div id="gridContent" style="padding:20px;">
+            @grid.GetHtml(columns:
+                    grid.Columns
+                    (
+                            grid.Column("ID", "ID"),
+                            grid.Column("Name", "Person Name"),
+                            grid.Column("BusinessWebsite", "Business Website"),
+                            grid.Column("Subject", "Subject")
+                    ), mode: WebGridPagerModes.Numeric)
+        </div>*@
+
+    <div class="table table-responsive">
+        @grid.GetHtml(
+        tableStyle: "webgrid-table",
+        //headerStyle: "webgrid-header",
+        footerStyle: "webgrid-footer",
+        alternatingRowStyle: "webgrid-alternating-row",
+        selectedRowStyle: "webgrid-selected-row",
+        rowStyle: "webgrid-row-style",
+        mode: WebGridPagerModes.All,
+        columns:
+            grid.Columns(
+                        grid.Column("ID", "ID"),
+                        grid.Column("Name", "Person Name"),
+                        grid.Column("BusinessWebsite", "Business Website"),
+                        grid.Column("Subject", "Subject"),
+                         grid.Column("hasReplied", "Replied"),
+                          grid.Column("ReplySentOn", "Reply Sent On"),
+                          grid.Column(header: "",
+                             style: "text-align-center-col",
+                             format: item => @Html.ActionLink("Reply", "ContactUsQueryDetail", "Business", new { ContactUsID = item.Id }, htmlAttributes: null))
+                            @*grid.Column(header: "", format: item => item.GetSelectLink("Select")),
+                                   grid.Column(header: "",
+                                     format: @<form action="/Business/ContactUsQueryDetail?ContactUsID=@item.Id" method="post">
+                                    <input type="submit"
+                                           onclick="return confirm('Do you want to delete this record?');"
+                                           value="Delete" />
+                                </form>)*@
+           ))
+        <strong>Page:</strong> @(grid.PageIndex + 1) / @grid.PageCount,
+        <strong>Records:</strong> @WebGridPageFirstItem(@grid) - @WebGridPageLastItem(@grid) of @grid.TotalRowCount
+    </div>
+    @helper WebGridPageFirstItem(WebGrid grid)
+    {
+        @(((grid.PageIndex + 1) * grid.RowsPerPage) - (grid.RowsPerPage - 1));
+}
+
+    @helper WebGridPageLastItem(WebGrid grid)
+    {
+if (grid.TotalRowCount < (grid.PageIndex + 1 * grid.RowsPerPage))
+{
+        @grid.TotalRowCount;
+
+    }
+    else
+    {
+        @((grid.PageIndex + 1) * grid.RowsPerPage);
+    }
+}
+}
